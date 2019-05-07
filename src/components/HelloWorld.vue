@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>这是饿了吗主页面</h1>
-    <h1>{{ msg }}</h1>
+    <h2>{{msg}}</h2>
+    <h3>哼</h3>
   </div>
 </template>
 
