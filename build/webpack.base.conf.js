@@ -9,7 +9,6 @@ function resolve (dir) {
 }
 
 
-
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
@@ -80,6 +79,6 @@ module.exports = {
     child_process: 'empty'
   },
   externals:{
-    'mint-ui':'MINT'
+    "vue":"Vue",
   }
 };
