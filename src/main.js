@@ -10,6 +10,10 @@ Vue.use(MintUI)
 //ll-pingjia-style 引入自己的评价区域css样式
 import "./assets/css/ll-pingjia-style.css"
 
+import axios from "axios"
+Vue.prototype.$axios = axios
+
+
 Vue.config.productionTip = false
 
 //11111111
