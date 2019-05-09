@@ -5,7 +5,7 @@
           <img :src="avatar" style="width: 128px;height: 128px;border-radius: 4px">
         </div>
         <div class="right">
-          <img src="" alt="">
+<!--          <img src="" alt="">-->
         </div>
         
       </div>
