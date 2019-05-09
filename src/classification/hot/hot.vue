@@ -2,29 +2,11 @@
   <div>
     <div class="left">
       <ul>
-        <li @click="ChangeWhite" ref="hot">
-          <div>热销榜</div>
-        </li>
-        <li>
-          <div class="photo"><img src="../../img/special_3@2x.png" alt=""><span>单人特色套餐</span></div>
-        </li>
-        <li>
-          <div>特色粥品</div>
-        </li>
-        <li>
-          <div>精选热菜</div>
-        </li>
-        <li>
-          <div>爽口凉菜</div>
-        </li>
-        <li>
-          <div>半成品</div>
-        </li>
-        <li>
-          <div>饭类</div>
-        </li>
-        <li>
-          <div>面类</div>
+        <li v-for="(aa,index) in list" @click="ChangeWhite(index)" :class="{white:changeRed == index}">
+          <div>
+            <img v-if="aa.img" :src="aa.img" alt="">
+            {{aa.name}}
+          </div>
         </li>
       </ul>
     </div>
@@ -49,20 +31,32 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
+  import special from "../../img/special_3@2x.png"
   export default {
     name: "hot",
     data() {
-      return {};
+      return {
+        list: [
+          {name: "热销榜"},
+          {name: "单人特色套餐", img: special},
+          {name: "特色粥品"},
+          {name: "精选热菜"},
+          {name: "爽口凉菜"},
+          {name: "半成品"},
+          {name: "饭类"},
+          {name: "面类"}
+        ],
+        changeRed: -1
+      };
     },
     methods: {
-      ChangeWhite() {
-        this.$refs.hot.style.backgroundColor = "white";
+      ChangeWhite(index) {
+        this.changeRed = index;
       }
     }
   }
@@ -92,10 +86,6 @@
     font-size: 22px;
     list-style: none;
     background-color: #f3f5f7;
-  }
-
-  .photo {
-    margin-top: 20px;
   }
 
   li > div {
@@ -195,5 +185,9 @@
     width: 40px;
     height: 40px;
     vertical-align: middle;
+  }
+
+  .white {
+    background-color: white;
   }
 </style>
