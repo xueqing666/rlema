@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <!--头啊-->
     <Headers></Headers>
-    <div class="div2"></div>
 
     <!--大姐书写评价区域-->
-    <llcontpingjia></llcontpingjia>
+    <!--<llcontpingjia></llcontpingjia>-->
 
+    <!--脚上-->
+    <footercar></footercar>
 
   </div>
 </template>
@@ -47,7 +49,8 @@
 
 
 <script>
-  import Headers from "./components/Headers"
+  import Headers from "./components/public/Headers"
+  import footercar from "./components/public/footercar"
 
   import llcontpingjia from "./components/ll-cont-pingjia.vue";
 
@@ -55,7 +58,7 @@
   export default {
     name: 'App',
     components:{
-      Headers,llcontpingjia,
+      Headers,footercar,llcontpingjia,
     },
     data(){
       return{
@@ -75,17 +78,16 @@
     .bg-image("./assets/brand")
   }
 
-<style>
   *{
     margin:0;
     padding:0;
   }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 375px;
+  background-size: 100% 100%;
+  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
+  /*-webkit-font-smoothing: antialiased;*/
+  /*-moz-osx-font-smoothing: grayscale;*/
+  /*text-align: center;*/
+  /*color: #2c3e50;*/
 }
 </style>
