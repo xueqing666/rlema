@@ -22,20 +22,12 @@
           <div class="ll-pingfen-fs-right">
             <div>
               <span>商品口感</span>
-              <img src="../assets/star24_on@2x.png" alt="">
-              <img src="../assets/star24_on@2x.png" alt="">
-              <img src="../assets/star24_on@2x.png" alt="">
-              <img src="../assets/star24_on@2x.png" alt="">
-              <img src="../assets/star24_off@2x.png" alt="">
+              <starcomponent :llscoress="3.9"></starcomponent>
               <span>3.9</span>
             </div>
             <div>
               <span>服务态度</span>
-              <img src="../assets/star24_on@2x.png" alt="">
-              <img src="../assets/star24_on@2x.png" alt="">
-              <img src="../assets/star24_on@2x.png" alt="">
-              <img src="../assets/star24_on@2x.png" alt="">
-              <img src="../assets/star24_off@2x.png" alt="">
+              <starcomponent :llscoress="4"></starcomponent>
               <span>4.0</span>
             </div>
             <div class="sdsj">
@@ -57,50 +49,79 @@
             </div>
           </div>
           <!--数据区域-->
-          <div class="ll-pingjia-list">
+          <div class="ll-pingjia-list" >
             <!--*** 循环铺数据区域 ***-->
-            <div class="ll-pingjia-list-every">
+            <div class="ll-pingjia-list-every" v-for="item in llpingjiaarr" :key="item.ratingId">
+              <!--<div :llpingjiabg="llpingjiabg"></div>-->
               <div></div>
               <div class="ll-pingjia-list-evt">
                 <div>
-                  <span>聚***家</span>
-                  <span>2019-2-2</span>
+                  <span>{{item.username}}</span>
+                  <span>{{item.rateTime|formatDate}}</span>
                 </div>
                 <div>
-                  <img src="../assets/star24_on@2x.png" alt="">
-                  <img src="../assets/star24_on@2x.png" alt="">
-                  <img src="../assets/star24_on@2x.png" alt="">
-                  <img src="../assets/star24_on@2x.png" alt="">
-                  <img src="../assets/star24_off@2x.png" alt="">
-                  <span>80分钟送达</span>
+                  <starcomponent :llscoress="item.score"></starcomponent>
+                  <span>{{item.deliveryTime}}分钟送达</span>
                 </div>
                 <p>
-                  油条凉了，而且没有酱。75分钟才到，很慢，送餐员态度不错，但毕竟好晚了啊。
+                  {{item.text}}
                 </p>
                 <div>
                   <img src="../assets/star24_on@2x.png" alt="">
-                  <span>大王香菇卤肉超级好吃饭</span>
-                  <span>大王香菇卤肉超级好吃饭</span>
-                  <span>大王香菇卤肉超级好吃饭</span>
+                  <span v-for="ite in item.recommend">{{ite}}</span>
                 </div>
               </div>
             </div>
+
             <!--<mt-cell v-for="n in 5" :key="n" :title="'测试 ' + n" />-->
           </div>
 
       </div>
+
       </mt-tab-container-item>
     </mt-tab-container>
   </div>
 </template>
 
 <script>
+  import starcomponent from "./ll-star-component";
+
   export default {
-    // name: 'HelloWorld',
+    name:"ll-cont-pingjia",
+    components:{
+      starcomponent,
+    },
     data () {
       return {
         selected:"",
+        llpingjiaarr:[],
+        llpingjiabg:"",
       }
-    }
+    },
+    filters: {
+      formatDate: function (value) {
+        let date = new Date(value);
+        let y = date.getFullYear();
+        let MM = date.getMonth() + 1;
+        MM = MM < 10 ? ('0' + MM) : MM;
+        let d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        let h = date.getHours();
+        h = h < 10 ? ('0' + h) : h;
+        let m = date.getMinutes();
+        m = m < 10 ? ('0' + m) : m;
+        let s = date.getSeconds();
+        s = s < 10 ? ('0' + s) : s;
+        return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
+      }
+    },
+    created(){
+      var _llthis = this;
+      this.$axios.get("/api/sell/rating/list")
+        .then(function (res) {
+          _llthis.llpingjiaarr = res.data.data;
+          // console.log(_llthis.llpingjiaarr);
+        })
+    },
   }
 </script>

@@ -21,7 +21,7 @@
           var _this = this
           this.$axios.get("/api/sell/shop/info?shopId=1544670774658295899")
             .then(function (res) {
-              _this.avatar = res.data.data.avatar
+              _this.avatar = res.data.data.avatar;
             })
       }
     }

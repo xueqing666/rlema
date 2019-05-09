@@ -2,7 +2,6 @@
   <div id="app">
     <Headers></Headers>
     <div class="div2"></div>
-
     <!--大姐书写评价区域-->
     <llcontpingjia></llcontpingjia>
 
@@ -48,9 +47,7 @@
 
 <script>
   import Headers from "./components/Headers"
-
   import llcontpingjia from "./components/ll-cont-pingjia.vue";
-
 
   export default {
     name: 'App',
@@ -69,22 +66,8 @@
 </script>
 
 <style lang="less">
-  .div2{
-    width: 100%;
-    height: 100px;
-    .bg-image("./assets/brand")
-  }
-
-<style>
   *{
     margin:0;
     padding:0;
   }
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 </style>
