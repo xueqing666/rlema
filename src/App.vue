@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Headers></Headers>
+    <div class="div2"></div>
   </div>
 </template>
 
@@ -49,7 +50,13 @@
   }
 </script>
 
-<style>
+<style lang="less">
+  .div2{
+    width: 100%;
+    height: 100px;
+    .bg-image("./assets/brand")
+  }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
