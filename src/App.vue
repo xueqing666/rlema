@@ -5,12 +5,12 @@
 
     <!--大姐书写评价区域-->
     <!--<llcontpingjia></llcontpingjia>-->
+    <HelloWorld/>
 
     <!--脚上-->
     <footercar></footercar>
 
-   <HelloWorld/>
-    <!--闪电发货-->
+
   </div>
 </template>
 
@@ -44,16 +44,12 @@
     height: 100px;
     .bg-image("./assets/brand")
   }
+
   *{
     margin:0;
     padding:0;
   }
 #app {
   background-size: 100% 100%;
-  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
-  /*-webkit-font-smoothing: antialiased;*/
-  /*-moz-osx-font-smoothing: grayscale;*/
-  /*text-align: center;*/
-  /*color: #2c3e50;*/
 }
 </style>
