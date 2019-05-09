@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Headers></Headers>
+    <div class="div2"></div>
 
     <!--大姐书写评价区域-->
     <llcontpingjia></llcontpingjia>
@@ -66,6 +67,13 @@
     }
   }
 </script>
+
+<style lang="less">
+  .div2{
+    width: 100%;
+    height: 100px;
+    .bg-image("./assets/brand")
+  }
 
 <style>
   *{

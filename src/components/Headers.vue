@@ -4,10 +4,7 @@
         <div class="left">
           <img :src="avatar" style="width: 128px;height: 128px;border-radius: 4px">
         </div>
-        <div class="right">
-<!--          <img src="" alt="">-->
-        </div>
-        
+        <div class="right"></div>
       </div>
     </div>
 </template>
@@ -30,11 +27,17 @@
     }
 </script>
 
-<style scoped>
+<style lang="less">
 .head{
   color: rgba(7,17,27,.5);
   blur:10px;
   padding-top: 48px;
   padding-left: 48px;
 }
+  .right{
+    width: 100%;
+    height: 100px;
+    background: #66CDAA;
+    .bg-image("../assets/decrease_1");
+  }
 </style>
