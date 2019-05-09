@@ -16,7 +16,6 @@
     <!--tab-container -->
     <mt-tab-container v-model="selected">
       <mt-tab-container-item id="1">
-        <!--<mt-cell v-for="n in 10" :key="n" :title="'内容 ' + n" />-->
         <hot/>
       </mt-tab-container-item>
     </mt-tab-container>

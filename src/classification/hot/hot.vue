@@ -2,11 +2,11 @@
   <div>
     <div class="left">
       <ul>
-        <li>
+        <li @click="ChangeWhite" ref="hot">
           <div>热销榜</div>
         </li>
         <li>
-          <div><img src="../../img/special_3@2x.png" alt=""><span>单人特色套餐</span></div>
+          <div class="photo"><img src="../../img/special_3@2x.png" alt=""><span>单人特色套餐</span></div>
         </li>
         <li>
           <div>特色粥品</div>
@@ -29,31 +29,42 @@
       </ul>
     </div>
     <div class="right">
-      <div class="top">单人特色套餐</div>
-      <div class="content">
-        <div class="every">
-          <div class="every_left">
-            <img src="../../img/invoice_1@3x.png" alt="">
-          </div>
-          <div class="every_middle">
-            <div class="every_middle_top">皮蛋瘦肉粥配包子套餐</div>
-            <div class="every_middle_button">月售1132份 好评率100%</div>
-            <div class="every_middle_foot">￥24<span>￥28</span></div>
-          </div>
-          <div class="every_right">
-            <span><img src="../../img/remove_circle_outline.svg" alt=""></span>
-            <span class="singletonNumber">1</span>
-            <span><img src="../../img/add_circle.svg" alt=""></span>
+      <div class="classification">
+        <div class="top">单人特色套餐</div>
+        <div class="content">
+          <div class="every">
+            <div class="every_left">
+              <img src="../../img/invoice_1@3x.png" alt="">
+            </div>
+            <div class="every_middle">
+              <div class="every_middle_top">皮蛋瘦肉粥配包子套餐</div>
+              <div class="every_middle_button">月售1132份 好评率100%</div>
+              <div class="every_middle_foot">￥24<span>￥28</span></div>
+            </div>
+            <div class="every_right">
+              <span><img src="../../img/remove_circle_outline.svg" alt=""></span>
+              <span class="singletonNumber">1</span>
+              <span><img src="../../img/add_circle.svg" alt=""></span>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "hot"
+    name: "hot",
+    data() {
+      return {};
+    },
+    methods: {
+      ChangeWhite() {
+        this.$refs.hot.style.backgroundColor = "white";
+      }
+    }
   }
 </script>
 
@@ -70,17 +81,21 @@
     margin-top: 2px;
   }
 
-  ul > li:first-child {
-    padding-top: 32px;
+  ul > li:nth-child(2) {
+    line-height: 20px;
+    padding-top: 20px;
   }
 
   ul > li {
     width: 100%;
-    height: 108px;
+    line-height: 84px;
     font-size: 22px;
     list-style: none;
     background-color: #f3f5f7;
+  }
 
+  .photo {
+    margin-top: 20px;
   }
 
   li > div {
