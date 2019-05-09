@@ -14,26 +14,21 @@
 </template>
 
 <script>
+
+  import HelloWorld from "./components/middlemain/HelloWorld"
   import Headers from "./components/public/Headers"
-  import footercar from "./components/public/footercar"
+  import ll_cont_pingjia from "./components/middlemain/ll-cont-pingjia"
+  import footercar from "./components/public/footercar";
 
-  import llcontpingjia from "./components/ll-cont-pingjia.vue";
-
-
-  import HelloWorld from "./components/HelloWorld"
   export default {
     name: 'App',
-    components:{
-      Headers,footercar,llcontpingjia,
-      HelloWorld
+    components: {
+      HelloWorld, Headers, ll_cont_pingjia,footercar,
     },
-    data(){
-      return{
-
-      }
+    data() {
+      return {}
     },
-    methods:{
-    }
+    methods: {}
   }
 </script>
 
