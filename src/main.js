@@ -13,10 +13,8 @@ import "./assets/css/ll-pingjia-style.css"
 import axios from "axios"
 Vue.prototype.$axios = axios
 
-
 Vue.config.productionTip = false
 
-//11111111
 new Vue({
   el: '#app',
   router,
