@@ -15,7 +15,7 @@
 
 <script>
 
-  import HelloWorld from "./components/middlemain/HelloWorld"
+  import HelloWorld from "./components/middlemain/mainmenu"
   import Headers from "./components/public/Headers"
   import ll_cont_pingjia from "./components/middlemain/ll-cont-pingjia"
   import footercar from "./components/public/footercar";
