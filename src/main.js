@@ -13,6 +13,10 @@ import "./assets/css/ll-pingjia-style.css"
 import axios from "axios"
 Vue.prototype.$axios = axios
 
+import Icon from "vue2-svg-icon/Icon"
+Vue.component("icon",Icon)
+
+
 Vue.config.productionTip = false
 
 new Vue({
