@@ -1,17 +1,7 @@
 <template>
   <!--评价区域的页面-->
   <div class="ll-pingjia-style">
-
-    <mt-navbar v-model="selected">
-      <mt-tab-item id="1" class="ll-pingjia-navlist">商品</mt-tab-item>
-      <mt-tab-item id="2" class="ll-pingjia-navlist">评价</mt-tab-item>
-      <mt-tab-item id="3" class="ll-pingjia-navlist">商家</mt-tab-item>
-      </mt-navbar>
-
-      <mt-tab-container v-model="selected">
-
-        <!--评价-->
-      <mt-tab-container-item id="2">
+    <!--评价-->
       <div>
         <div class="ll-pingjia-fenshu">
           <div class="ll-pingfen-fs-left">
@@ -36,7 +26,6 @@
             </div>
           </div>
         </div>
-
           <div class="ll-pingjia-manyi">
             <div class="ll-pingjia-manyi-top">
               <button>全部 <span>57</span></button>
@@ -44,11 +33,11 @@
               <button>不满意 <span>10</span></button>
             </div>
             <div class="ll-pingjia-manyi-bot">
-              <img src="../assets/star24_on@2x.png" alt="">
+              <img src="../../assets/star24_on@2x.png" alt="">
               <span>只看有内容的评价</span>
             </div>
           </div>
-          <!--数据区域-->
+          <!--评价数据区域-->
           <div class="ll-pingjia-list" >
             <!--*** 循环铺数据区域 ***-->
             <div class="ll-pingjia-list-every" v-for="item in llpingjiaarr" :key="item.ratingId">
@@ -67,19 +56,13 @@
                   {{item.text}}
                 </p>
                 <div>
-                  <img src="../assets/star24_on@2x.png" alt="">
+                  <img src="../../assets/star24_on@2x.png" alt="">
                   <span v-for="ite in item.recommend">{{ite}}</span>
                 </div>
               </div>
             </div>
-
-            <!--<mt-cell v-for="n in 5" :key="n" :title="'测试 ' + n" />-->
           </div>
-
       </div>
-
-      </mt-tab-container-item>
-    </mt-tab-container>
   </div>
 </template>
 

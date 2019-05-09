@@ -20,8 +20,8 @@
 </template>
 
 <script>
-  import hot from "../classification/hot/hot";
-  import llpingjia from "../components/ll-cont-pingjia"
+  import hot from "../../classification/hot/hot";
+  import llpingjia from "./ll-cont-pingjia"
 
   export default {
     name: 'HelloWorld',

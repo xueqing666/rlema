@@ -1,24 +1,25 @@
 <template>
   <div id="app">
+
     <Headers/>
     <HelloWorld/>
-
     <!--脚上-->
     <footercar></footercar>
-
 
   </div>
 </template>
 
 <script>
 
-  import HelloWorld from "./components/HelloWorld"
-  import Headers from "./components/Headers"
-  import ll_cont_pingjia from "./components/ll-cont-pingjia"
+  import HelloWorld from "./components/middlemain/HelloWorld"
+  import Headers from "./components/public/Headers"
+  import ll_cont_pingjia from "./components/middlemain/ll-cont-pingjia"
+  import footercar from "./components/public/footercar";
+
   export default {
     name: 'App',
     components: {
-      HelloWorld, Headers, ll_cont_pingjia, Headers
+      HelloWorld, Headers, ll_cont_pingjia,footercar,
     },
     data() {
       return {}
