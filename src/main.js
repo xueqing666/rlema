@@ -12,7 +12,6 @@ import "./assets/css/ll-pingjia-style.css"
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
