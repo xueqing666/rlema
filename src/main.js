@@ -19,7 +19,6 @@ Vue.component("icon",Icon)
 
 Vue.config.productionTip = false
 
-//11111111
 new Vue({
   el: '#app',
   router,
