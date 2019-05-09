@@ -2,9 +2,14 @@
   <div id="app">
     <Headers></Headers>
     <div class="div2"></div>
+
+    <!--大姐书写评价区域-->
+    <llcontpingjia></llcontpingjia>
+
+
   </div>
 </template>
-<!--dsijiz-->
+
 
 <!--    <mt-header fixed title="固定在顶部"></mt-header>-->
 <!--    <mt-header title="标题过长会隐藏后面的内容啊哈哈哈哈">-->
@@ -44,9 +49,22 @@
 <script>
   import Headers from "./components/Headers"
 
+  import llcontpingjia from "./components/ll-cont-pingjia.vue";
+
+
   export default {
     name: 'App',
-    components:{Headers}
+    components:{
+      Headers,llcontpingjia,
+    },
+    data(){
+      return{
+        // active:'1',
+      }
+    },
+    methods:{
+
+    }
   }
 </script>
 
@@ -57,6 +75,11 @@
     .bg-image("./assets/brand")
   }
 
+<style>
+  *{
+    margin:0;
+    padding:0;
+  }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
