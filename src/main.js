@@ -7,6 +7,8 @@ import 'lib-flexible'
 import MintUI from "mint-ui"
 import "mint-ui/lib/style.css"
 Vue.use(MintUI)
+//ll-pingjia-style 引入自己的评价区域css样式
+import "./assets/css/ll-pingjia-style.css"
 
 Vue.config.productionTip = false
 
