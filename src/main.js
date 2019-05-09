@@ -8,6 +8,10 @@ import MintUI from "mint-ui"
 import "mint-ui/lib/style.css"
 Vue.use(MintUI)
 
+import axios from "axios"
+Vue.prototype.$axios = axios
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
