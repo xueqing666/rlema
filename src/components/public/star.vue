@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="llStar" v-for="item in llscorestar" :llscorestar="llscoress">
-      <img v-bind:src="item" />
+    <div v-for="item in llscorestar" :llscorestar="llscoress">
+       <img v-bind:src="item" />
     </div>
   </div>
 </template>
-<script>
 
+<script>
   export default {
     name:"star",
     props:["llscoress"],
@@ -29,9 +29,3 @@
     },
   }
 </script>
-
-<style>
-.llStar{
-  display: inline-block;
-}
-</style>
