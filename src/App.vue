@@ -5,7 +5,6 @@
 
     <!--脚上-->
     <footercar></footercar>
-    <!--佳佳-->
 
 
   </div>
@@ -39,10 +38,5 @@
     text-align: center;
     color: #2c3e50;
     background-size: 100% 100%;
-  }
-
-  *{
-    margin:0;
-    padding:0;
   }
 </style>
