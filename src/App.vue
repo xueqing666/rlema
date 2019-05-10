@@ -5,20 +5,20 @@
 
     <!--脚上-->
     <footercar></footercar>
+    <!--佳佳-->
 
 
   </div>
 </template>
 
 <script>
-
-  import HelloWorld from "./components/HelloWorld"
   import Headers from "./components/Headers"
-  import ll_cont_pingjia from "./components/ll-cont-pingjia"
+  import HelloWorld from "./components/HelloWorld"
+  import footercar from "./components/public/footercar"
   export default {
     name: 'App',
     components: {
-      HelloWorld, Headers, ll_cont_pingjia, Headers
+      HelloWorld, Headers, footercar
     },
     data() {
       return {}
@@ -38,18 +38,11 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-  }
-  .div2{
-    width: 100%;
-    height: 100px;
-    .bg-image("./assets/brand")
+    background-size: 100% 100%;
   }
 
   *{
     margin:0;
     padding:0;
   }
-#app {
-  background-size: 100% 100%;
-}
 </style>

@@ -18,10 +18,10 @@
               <img :src="bb.foods[index].icon" alt="">
             </div>
             <div class="every_middle">
-            <div class="every_middle_top">{{bb.foods[index].name}}</div>
-            <div class="every_middle_button">月售1132份 好评率100%</div>
-            <div class="every_middle_foot">￥{{bb.foods[index].price}}<span>￥28</span></div>
-          </div>
+              <div class="every_middle_top">{{bb.foods[index].name}}</div>
+              <div class="every_middle_button">月售1132份 好评率100%</div>
+              <div class="every_middle_foot">￥{{bb.foods[index].price}}<span>￥28</span></div>
+            </div>
             <div class="every_right">
               <span><img src="../../img/remove_circle_outline.svg" alt=""></span>
               <span class="singletonNumber">1</span>
@@ -41,7 +41,7 @@
     data() {
       return {
         changeRed: -1,
-        list: "",
+        list: ""
       };
     },
     created() {
@@ -49,12 +49,12 @@
       this.$axios.get("/api/sell/buyer/product/list")
         .then(function (res) {
           _this.list = res.data.data;
-          console.log(_this.list);
         })
     },
     methods: {
       ChangeWhite(index) {
         this.changeRed = index;
+        console.log(index);
       }
     }
   }
@@ -62,13 +62,13 @@
 
 <style scoped>
   .shop_left {
-    width: 160px;
+    width: 200px;
     font-weight: 200;
     float: left;
     margin-top: 2px;
   }
 
-  ul > li {
+  .shop_left > ul > li {
     width: 100%;
     line-height: 84px;
     font-size: 22px;
@@ -76,15 +76,17 @@
     background-color: #f3f5f7;
   }
 
-  li > div {
+  .shop_left > ul > li > div {
     width: 112px;
     margin: 0 auto;
     height: 84px;
   }
 
   .shop_right {
-    width: 565px;
-    float: left;
+    width: 600px;
+    left: 200px;
+    position: absolute;
+    overflow: hidden;
   }
 
   .top {

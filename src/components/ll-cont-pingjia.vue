@@ -81,7 +81,7 @@
 
 <script>
   export default {
-    // name: 'll-cont-pingjia',
+    name: 'll-cont-pingjia',
     data() {
       return {
         selected: "",
