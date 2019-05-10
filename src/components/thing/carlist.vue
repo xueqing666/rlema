@@ -32,6 +32,12 @@
 <script>
   export default {
     name: "carlist",
+    component:{},
+    data(){
+      return{
+
+      }
+    },
   }
 </script>
 
@@ -83,9 +89,7 @@
   }
   .xxl_scrollDiv{
     width: 100%;
-    height: 690px;
     position: absolute;
-    background-color: yellowgreen;
   }
   .xxl_scrollDiv > ul > li {
     width: 700px;
