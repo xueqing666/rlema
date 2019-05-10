@@ -44,7 +44,7 @@
   padding-left: 36px;
   position: fixed;
   bottom: 0;
-  z-index: 100;
+  z-index: 2;
 }
 .xq-foot .fl{
   float: left;

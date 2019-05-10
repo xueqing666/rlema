@@ -12,7 +12,8 @@
     <!--店铺信息-->
     <shopmes v-if="shopclick" @shopmesclosebaba="shopmesclosebaba"></shopmes>
 
-
+    <!--商品详情页-->
+    <detailpage></detailpage>
   </div>
 </template>
 
@@ -22,11 +23,12 @@
   import mainmenu from "./components/middlemain/mainmenu"
   import footercar from "./components/public/footercar";
   import shopmes from "./components/shopstore/shopmes"
+  import detailpage from "./components/middlemain/ll-xiangqing"
 
   export default {
     name: 'App',
     components: {
-      Headers, mainmenu,footercar,shopmes
+      Headers, mainmenu,footercar,shopmes,detailpage
     },
     data() {
       return {

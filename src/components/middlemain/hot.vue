@@ -14,7 +14,7 @@
         <div class="classification" v-for="bb in list">
           <div class="top">{{bb.name}}</div>
           <div class="content" v-for="(cc,index) in bb.foods">
-            <div class="every">
+            <div class="every" @click="llxqevery(cc)">
               <div class="every_left">
                 <img :src="bb.foods[index].icon" alt="">
               </div>
@@ -52,13 +52,16 @@
       this.$axios.get("/api/sell/buyer/product/list")
         .then(function (res) {
           _this.list = res.data.data;
-          console.log(_this.list);
+          // console.log(_this.list);
         })
     },
     methods: {
       ChangeWhite(index) {
         this.changeRed = index;
-        console.log(index);
+        // console.log(index);
+      },
+      llxqevery(llevjson){
+        console.log(llevjson)
       }
     }
   }
