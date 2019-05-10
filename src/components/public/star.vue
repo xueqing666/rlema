@@ -8,7 +8,7 @@
 
 <script>
   export default {
-    name:"ll-star-component",
+    name:"star",
     props:["llscoress"],
     computed:{
       llscorestar(){

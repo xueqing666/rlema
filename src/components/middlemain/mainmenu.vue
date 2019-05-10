@@ -20,11 +20,11 @@
 </template>
 
 <script>
-  import hot from "../../classification/hot/hot";
+  import hot from "./hot";
   import llpingjia from "./ll-cont-pingjia"
 
   export default {
-    name: 'HelloWorld',
+    name: 'mainmenu',
     components: {
       hot,llpingjia
     },
@@ -36,3 +36,5 @@
     },
   }
 </script>
+
+<style scoped></style>

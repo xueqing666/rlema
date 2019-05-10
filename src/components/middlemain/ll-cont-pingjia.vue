@@ -65,7 +65,7 @@
 </template>
 
 <script>
-  import starcomponent from "./ll-star-component";
+  import starcomponent from "../public/star";
 
   export default {
     name:"ll-cont-pingjia",
