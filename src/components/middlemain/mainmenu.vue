@@ -14,6 +14,9 @@
       <mt-tab-container-item id="2">
         <llpingjia/>
       </mt-tab-container-item>
+      <mt-tab-container-item id="3">
+        <llonemas/>
+      </mt-tab-container-item>
     </mt-tab-container>
 
   </div>
@@ -22,11 +25,12 @@
 <script>
   import hot from "./hot";
   import llpingjia from "./ll-cont-pingjia"
+  import llonemas from "./ll-onemas"
 
   export default {
     name: 'mainmenu',
     components: {
-      hot,llpingjia
+      hot,llpingjia,llonemas
     },
     data() {
       return {
