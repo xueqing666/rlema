@@ -19,18 +19,24 @@
 </script>
 
 <style scoped lang="less">
+  *{
+    margin: 0;
+    padding: 0;
+  }
 .xq-foot{
   width: 100%;
   height: 100px;
   background-color: black;
   padding-left: 36px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .xq-foot .fl{
   float: left;
 }
   .xq-foot .photo{
-    width: 116px;
-    height: 116px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background-color: rgba(128, 133, 138, 0.4);
     position: relative;
@@ -38,11 +44,12 @@
     margin-right: 36px;
   }
 .xq-foot .photo .cc{
+    color: rgba(255,255,255,.3);
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -40px;
-    margin-top: -40px;
+    margin-left: -35px;
+    margin-top: -25px;
   }
 .xq-foot .photo .how{
   width: 35px;
@@ -53,7 +60,7 @@
   color: white;
   text-align: center;
   position: absolute;
-  top: 0px;
+  top: 10px;
   left: 60px;
   z-index: 1;
 }
