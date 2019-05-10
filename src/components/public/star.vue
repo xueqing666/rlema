@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="item in llscorestar" :llscorestar="llscoress">
+    <div class="llStar" v-for="item in llscorestar" :llscorestar="llscoress">
       <img v-bind:src="item" />
     </div>
   </div>
@@ -31,5 +31,7 @@
 </script>
 
 <style>
-
+.llStar{
+  display: inline-block;
+}
 </style>

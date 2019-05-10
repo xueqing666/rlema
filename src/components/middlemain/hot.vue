@@ -49,7 +49,6 @@
       this.$axios.get("/api/sell/buyer/product/list")
         .then(function (res) {
           _this.list = res.data.data;
-          console.log(_this.list);
         })
     },
     methods: {

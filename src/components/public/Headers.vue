@@ -1,5 +1,5 @@
 <template>
-    <div class="xq-head" :style="{backgroundImage:'url('+avatar+')'}">
+    <div class="xq-head" @click="appear" :style="{backgroundImage:'url('+avatar+')'}">
       <div class="wrap">
         <div class="main">
           <div class="left" :style="{backgroundImage:'url('+avatar+')'}"></div>
@@ -34,7 +34,8 @@
             shopname:'',
             send:"",
             deliveryTime:'',
-            bulletin:''
+            bulletin:'',
+            flag:false
           }
       },
       created() {
@@ -47,6 +48,12 @@
               _this.deliveryTime = res.data.data.deliveryTime
               _this.bulletin = res.data.data.bulletin
             })
+      },
+      methods:{
+          appear:function () {
+            this.flag = true
+            this.$emit("shopclickbaba",this.flag)
+          }
       }
     }
 </script>

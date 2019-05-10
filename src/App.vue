@@ -1,34 +1,45 @@
 <template>
   <div id="app">
     <!--头啊-->
-    <Headers></Headers>
+    <Headers @shopclickbaba="shopclickbaba"></Headers>
 
     <!--大姐书写评价区域-->
-    <HelloWorld/>
+    <mainmenu></mainmenu>
 
     <!--脚上-->
     <footercar></footercar>
+
+    <!--店铺信息-->
+    <shopmes v-if="shopclick" @shopmesclosebaba="shopmesclosebaba"></shopmes>
 
 
   </div>
 </template>
 
 <script>
-
-  import HelloWorld from "./components/middlemain/mainmenu"
   import Headers from "./components/public/Headers"
-  import ll_cont_pingjia from "./components/middlemain/ll-cont-pingjia"
+  import mainmenu from "./components/middlemain/mainmenu"
   import footercar from "./components/public/footercar";
+  import shopmes from "./components/shopstore/shopmes"
 
   export default {
     name: 'App',
     components: {
-      HelloWorld, Headers, ll_cont_pingjia,footercar,
+      Headers, mainmenu,footercar,shopmes
     },
     data() {
-      return {}
+      return {
+        shopclick:false
+      }
     },
-    methods: {}
+    methods: {
+      shopclickbaba:function (flag) {
+        this.shopclick = flag
+      },
+      shopmesclosebaba:function (flag) {
+        this.shopclick = flag
+      }
+    }
   }
 </script>
 
