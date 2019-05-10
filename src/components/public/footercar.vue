@@ -30,7 +30,6 @@
     methods:{
       carlistAppear(){
         this.flag = !this.flag;
-        console.log("??");
       }
     }
   }

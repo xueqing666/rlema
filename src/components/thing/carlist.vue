@@ -12,7 +12,11 @@
             <ul>
               <li>
                 <div class="xxl_small">
-                  <div class="xxl_name">莲子核桃黑米粥</div>
+                  <div class="xxl_name">莲子核桃黑米粥
+                    <button @click="reductionFun">-</button>
+                    <button @click="addFun">+</button>
+                    <span>{{count1}}</span>
+                  </div>
                   <div class="xxl_money">￥<span>10</span></div>
                   <div class="xxl_operation">
                     <span><icon name="remove_circle_outline" class="xxl_remove"></icon></span>
@@ -30,14 +34,30 @@
 </template>
 
 <script>
+  import {mapState,mapActions,mapGetters} from "vuex";
   export default {
     name: "carlist",
-    component:{},
-    data(){
-      return{
-
-      }
+    component: {},
+    data() {
+      return {}
     },
+    computed:{
+      ...mapState({
+        count1:state=>state.count
+      })
+    },
+    methods: {
+      reductionFun() {
+        this.$store.dispatch("reductionFun");
+        console.log("计算前:" + this.$store.state.count);
+        console.log("计算后:" + this.$store.getters.getStateCount);
+      },
+      addFun() {
+        this.$store.dispatch("addFun");
+        console.log("计算前:" + this.$store.state.count);
+        console.log("计算后:" + this.$store.getters.getStateCount);
+      }
+    }
   }
 </script>
 
@@ -83,14 +103,19 @@
     float: right;
     margin-right: 36px;
   }
-  .xxl_shopCar_content{
+
+  .xxl_shopCar_content {
     width: 100%;
     position: relative;
   }
-  .xxl_scrollDiv{
+
+  .xxl_scrollDiv {
     width: 100%;
     position: absolute;
+    height: 690px;
+    background-color: white;
   }
+
   .xxl_scrollDiv > ul > li {
     width: 700px;
     height: 96px;
@@ -133,12 +158,13 @@
     font-size: 32px;
   }
 
-  .xxl_remove,.xxl_add{
+  .xxl_remove, .xxl_add {
     width: 50px;
     color: dodgerblue;
     float: left;
   }
-  .xxl_singletonNumber{
+
+  .xxl_singletonNumber {
     width: 46px;
     text-align: center;
     float: left;
