@@ -3,19 +3,18 @@
     <!--头啊-->
     <Headers></Headers>
 
-    <!--大姐书写评价区域-->
-    <HelloWorld/>
+    <!--中间切换区域-->
+    <mainmenu/>
 
     <!--脚上-->
     <footercar></footercar>
-
 
   </div>
 </template>
 
 <script>
 
-  import HelloWorld from "./components/middlemain/mainmenu"
+  import mainmenu from "./components/middlemain/mainmenu"
   import Headers from "./components/public/Headers"
   import ll_cont_pingjia from "./components/middlemain/ll-cont-pingjia"
   import footercar from "./components/public/footercar";
@@ -23,7 +22,7 @@
   export default {
     name: 'App',
     components: {
-      HelloWorld, Headers, ll_cont_pingjia,footercar,
+      mainmenu, Headers, ll_cont_pingjia,footercar,
     },
     data() {
       return {}

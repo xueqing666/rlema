@@ -35,6 +35,7 @@
 </template>
 
 <script>
+
   export default {
     name: "hot",
     component: {},
@@ -49,13 +50,13 @@
       this.$axios.get("/api/sell/buyer/product/list")
         .then(function (res) {
           _this.list = res.data.data;
-          console.log(_this.list);
+          // console.log(_this.list);
         })
     },
     methods: {
       ChangeWhite(index) {
         this.changeRed = index;
-      }
+      },
     }
   }
 </script>

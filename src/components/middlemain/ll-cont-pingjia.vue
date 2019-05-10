@@ -28,12 +28,12 @@
         </div>
           <div class="ll-pingjia-manyi">
             <div class="ll-pingjia-manyi-top">
-              <button>全部 <span>57</span></button>
+              <button @click="llall">全部 <span>57</span></button>
               <button @click="llgetgood">满意 <span>47</span></button>
               <button @click="llgetbad">不满意 <span>10</span></button>
             </div>
             <div class="ll-pingjia-manyi-bot">
-              <img src="../../assets/star24_on@2x.png" alt="">
+              <img src="../../assets/svg/check_circle.svg" alt="" style="height:24px;width:24px;">
               <span>只看有内容的评价</span>
             </div>
           </div>
@@ -54,7 +54,13 @@
                 </div>
                 <p>{{item.text}}</p>
                 <div>
-                  <img src="../../assets/star24_on@2x.png" alt="">
+                  <div v-if="item.rateType == 0">
+                    <img src="../../assets/svg/thumb_up.svg" alt="" style="width:24px;height:24px;">
+                  </div>
+                  <div v-else>
+                    <img src="../../assets/svg/thumb_down.svg" alt="" style="width:24px;height:24px;">
+                  </div>
+
                   <span v-for="ite in item.recommend">{{ite}}</span>
                 </div>
               </div>
@@ -76,7 +82,10 @@
       return {
         selected:"",
         llpingjiaarr:[],
+        llpjall:[],
         llpingjiabg:"",
+        llgoodarr:[],
+        llbadarr:[],
       }
     },
     filters: {
@@ -101,15 +110,33 @@
       this.$axios.get("/api/sell/rating/list")
         .then(function (res) {
           _llthis.llpingjiaarr = res.data.data;
-          console.log(_llthis.llpingjiaarr);
+          // console.log(_llthis.llpingjiaarr)
+        for(var i=0;i<_llthis.llpingjiaarr.length;i++){
+          _llthis.llpjall.push(_llthis.llpingjiaarr[i]);
+
+          if(_llthis.llpingjiaarr[i].rateType == 0){
+
+            _llthis.llgoodarr.push(_llthis.llpingjiaarr[i])
+          }
+          if(_llthis.llpingjiaarr[i].rateType == 1){
+            _llthis.llbadarr.push(_llthis.llpingjiaarr[i])
+          }
+        }
+
         })
     },
     methods:{
+      llall(){
+        // console.log(this.llpjall);
+        this.llpingjiaarr = this.llpjall;
+      },
       llgetgood(){
-        console.log("good");
+        // console.log(this.llgoodarr);
+        this.llpingjiaarr = this.llgoodarr;
       },
       llgetbad(){
-        console.log("bad");
+        // console.log(this.llbadarr);
+        this.llpingjiaarr = this.llbadarr;
       }
     }
   }
