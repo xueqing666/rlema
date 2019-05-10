@@ -118,38 +118,34 @@
   float:left;
   height:56px;
   width:56px;
-  background-image: url("../decrease_4@3x.png");
+  /*background-image: url("../decrease_4@3x.png");*/
   background-size:100% 100%;
   border-radius:50%;
-  background-color: green;
 }
  .ll-pingjia-list-every .ll-pingjia-list-evt{
   float:right;
   width:calc(100% - 80px);
   margin-left:24px;
-  /*text-align:left;*/
 }
-.ll-pingjia-style .ll-pingjia-list-evt div:first-child{
+.ll-pingjia-style .ll-pingjia-list-evt>div:first-child{
   overflow:hidden;
 }
-.ll-pingjia-style .ll-pingjia-list-evt div:first-child span:first-child{
+.ll-pingjia-style .ll-pingjia-list-evt>div:first-child span:first-child{
   font-size:20px;
   color:rgb(7,17,27);
   line-height: 24px;
   float:left;
 }
-.ll-pingjia-style .ll-pingjia-list-evt div:first-child span:last-child{
+.ll-pingjia-style .ll-pingjia-list-evt>div:first-child span:last-child{
   font-size:20px;
   font-weight:200;
   color:rgb(147,153,159);
   line-height: 24px;
   float:right;
 }
-.ll-pingjia-style .ll-pingjia-list-evt>div:nth-child(2){
-  margin-top:8px;
-}
 .ll-pingjia-style .ll-pingjia-list-evt>div:nth-child(2) div{
   display:inline-block;
+  margin-top:8px;
 }
 .ll-pingjia-style .ll-pingjia-list-evt>div:nth-child(2) span{
   font-size:20px;

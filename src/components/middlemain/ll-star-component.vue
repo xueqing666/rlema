@@ -1,12 +1,12 @@
 <template>
   <div>
     <div v-for="item in llscorestar" :llscorestar="llscoress">
-      <img v-bind:src="item" />
+       <img v-bind:src="item" />
     </div>
   </div>
 </template>
-<script>
 
+<script>
   export default {
     name:"ll-star-component",
     props:["llscoress"],
@@ -29,7 +29,3 @@
     },
   }
 </script>
-
-<style>
-
-</style>

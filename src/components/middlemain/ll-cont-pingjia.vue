@@ -29,8 +29,8 @@
           <div class="ll-pingjia-manyi">
             <div class="ll-pingjia-manyi-top">
               <button>全部 <span>57</span></button>
-              <button>满意 <span>47</span></button>
-              <button>不满意 <span>10</span></button>
+              <button @click="llgetgood">满意 <span>47</span></button>
+              <button @click="llgetbad">不满意 <span>10</span></button>
             </div>
             <div class="ll-pingjia-manyi-bot">
               <img src="../../assets/star24_on@2x.png" alt="">
@@ -41,8 +41,8 @@
           <div class="ll-pingjia-list" >
             <!--*** 循环铺数据区域 ***-->
             <div class="ll-pingjia-list-every" v-for="item in llpingjiaarr" :key="item.ratingId">
-              <!--<div :llpingjiabg="llpingjiabg"></div>-->
-              <div></div>
+              <div :style="{backgroundImage: 'url(' + item.avatar + ')' }"></div>
+
               <div class="ll-pingjia-list-evt">
                 <div>
                   <span>{{item.username}}</span>
@@ -52,9 +52,7 @@
                   <starcomponent :llscoress="item.score"></starcomponent>
                   <span>{{item.deliveryTime}}分钟送达</span>
                 </div>
-                <p>
-                  {{item.text}}
-                </p>
+                <p>{{item.text}}</p>
                 <div>
                   <img src="../../assets/star24_on@2x.png" alt="">
                   <span v-for="ite in item.recommend">{{ite}}</span>
@@ -103,8 +101,16 @@
       this.$axios.get("/api/sell/rating/list")
         .then(function (res) {
           _llthis.llpingjiaarr = res.data.data;
-          // console.log(_llthis.llpingjiaarr);
+          console.log(_llthis.llpingjiaarr);
         })
     },
+    methods:{
+      llgetgood(){
+        console.log("good");
+      },
+      llgetbad(){
+        console.log("bad");
+      }
+    }
   }
 </script>
