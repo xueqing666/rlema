@@ -55,6 +55,7 @@
       ChangeWhite(index) {
         this.changeRed = index;
         console.log(index);
+        console.log("???");
       }
     }
   }
