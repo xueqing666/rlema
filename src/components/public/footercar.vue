@@ -1,5 +1,6 @@
 <template>
-    <div class="xq-foot">
+  <div>
+    <div class="xq-foot" @click="carlistAppear">
       <div class="photo fl">
         <div class="how">12</div>
         <icon class="cc" name="shopping_cart" :w="40"></icon>
@@ -9,12 +10,29 @@
       <div class="send much fl">另需配送费 ￥4元</div>
       <div class="pay">￥20起送</div>
     </div>
+
+    <carlist v-if="flag"></carlist>
+
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "footercar"
+  import carlist from "../thing/carlist"
+
+  export default {
+    name: "footercar",
+    components: {carlist},
+    data() {
+      return {
+        flag :false
+      }
+    },
+    methods:{
+      carlistAppear(){
+        this.flag = !this.flag;
+      }
     }
+  }
 </script>
 
 <style scoped lang="less">
@@ -27,8 +45,11 @@
   height: 100px;
   background-color: black;
   padding-left: 36px;
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
   box-sizing: border-box;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 .xq-foot .fl{
   float: left;

@@ -12,6 +12,8 @@
     <!--店铺信息-->
     <shopmes v-if="shopclick" @shopmesclosebaba="shopmesclosebaba"></shopmes>
 
+    <!--商品详情页-->
+    <detailpage v-if="llflag"></detailpage>
   </div>
 </template>
 
@@ -20,11 +22,12 @@
   import mainmenu from "./components/middlemain/mainmenu"
   import footercar from "./components/public/footercar";
   import shopmes from "./components/shopstore/shopmes"
+  import detailpage from "./components/middlemain/ll-xiangqing"
 
   export default {
     name: 'App',
     components: {
-      Headers, mainmenu,footercar,shopmes
+      Headers, mainmenu,footercar,shopmes,detailpage
     },
     data() {
       return {
@@ -38,6 +41,11 @@
       shopmesclosebaba:function (flag) {
         this.shopclick = flag
       }
+    },
+    computed:{
+      llflag(){
+        return this.$store.state.llflag;
+      }
     }
   }
 </script>
@@ -46,6 +54,5 @@
   *{
     margin:0;
     padding:0;
-    box-sizing: border-box;
   }
 </style>

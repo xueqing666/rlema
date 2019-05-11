@@ -32,6 +32,7 @@
 
 <style>
   .llStar{
-    display: inline-block;
+    display:inline-block;
   }
 </style>
+
