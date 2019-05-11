@@ -80,8 +80,10 @@
           click:true
         })
         this.rights = new BScroll(this.$refs.right,{
-          probeType:3,
           click:true
+        })
+        this.rights = new BScroll(this.$refs.right,{
+          probeType:3,
         })
         this.rights.on("scroll",(pos)=>{
           this.scrollY = Math.abs(Math.round(pos.y))
