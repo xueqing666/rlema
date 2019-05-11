@@ -21,7 +21,7 @@
             <ul>
               <li class="content" v-for="(cc,index) in bb.foods">
                 <!--每个商品-->
-                <div class="every">
+                <div class="every" @click="llevjson(cc)">
                   <img class="photo fl" :src="bb.foods[index].icon" alt="">
                   <div class="every_r">
                     <div class="name">{{bb.foods[index].name}}</div>
@@ -80,6 +80,9 @@
           click:true
         })
         this.rights = new BScroll(this.$refs.right,{
+          click:true
+        })
+        this.rights = new BScroll(this.$refs.right,{
           probeType:3
         })
         this.rights.on("scroll",(pos)=>{
@@ -106,9 +109,12 @@
           this.rights.scrollToElement(el,300)
         }
       },
-
       addbtn:function () {
         this.btnflag = true;
+      },
+      llevjson(data){
+        // console.log(data);
+        this.$store.commit("llgetflag",{comflag:true,llevjson:data})
       }
     },
     computed:{

@@ -241,6 +241,7 @@
   .ll-onemas .ll-onemas-shijin{
     margin-top:32px;
     background-color: white;
+    font-size:0;
   }
   .ll-onemas .ll-onemas-shijin p{
     font-size:28px;
@@ -250,9 +251,9 @@
     padding:36px 0 24px 36px;
     overflow:hidden;
   }
-  .ll-onemas-shijin>div:nth-child(2){
-    margin-left:36px;
-  }
+  /*.ll-onemas-shijin>div:nth-child(2){*/
+    /*margin-left:36px;*/
+  /*}*/
   .ll-onemas-shijin>div{
     display:inline-block;
     height: 180px;

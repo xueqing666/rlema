@@ -9,7 +9,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     llgetflag(state,data){
-      console.log(data);
+      // console.log(data);
       state.llflag = data.comflag;
       state.llevjson = data.llevjson;
     }
