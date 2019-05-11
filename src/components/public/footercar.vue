@@ -36,6 +36,10 @@
 </script>
 
 <style scoped lang="less">
+  *{
+    margin: 0;
+    padding: 0;
+  }
 .xq-foot{
   width: 100%;
   height: 100px;
@@ -43,7 +47,9 @@
   padding-left: 36px;
   position: fixed;
   bottom: 0;
-  z-index: 100;
+  z-index: 2;
+  box-sizing: border-box;
+  /*overflow: hidden;*/
 }
 .xq-foot .fl{
   float: left;

@@ -3,7 +3,7 @@
     <!--头啊-->
     <Headers @shopclickbaba="shopclickbaba"></Headers>
 
-    <!--中间切换区域-->
+    <!--大姐书写评价区域-->
     <mainmenu></mainmenu>
 
     <!--脚上-->
@@ -12,21 +12,22 @@
     <!--店铺信息-->
     <shopmes v-if="shopclick" @shopmesclosebaba="shopmesclosebaba"></shopmes>
 
-
+    <!--商品详情页-->
+    <detailpage v-if="llflag"></detailpage>
   </div>
 </template>
 
 <script>
-
   import Headers from "./components/public/Headers"
   import mainmenu from "./components/middlemain/mainmenu"
   import footercar from "./components/public/footercar";
   import shopmes from "./components/shopstore/shopmes"
+  import detailpage from "./components/middlemain/ll-xiangqing"
 
   export default {
     name: 'App',
     components: {
-      Headers, mainmenu,footercar,shopmes
+      Headers, mainmenu,footercar,shopmes,detailpage
     },
     data() {
       return {
@@ -39,6 +40,11 @@
       },
       shopmesclosebaba:function (flag) {
         this.shopclick = flag
+      }
+    },
+    computed:{
+      llflag(){
+        return this.$store.state.llflag;
       }
     }
   }

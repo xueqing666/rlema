@@ -34,8 +34,7 @@
     },
     data() {
       return {
-        active: '1',
-        selected: ''
+        selected: '1'
       }
     },
   }
