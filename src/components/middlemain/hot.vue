@@ -21,7 +21,7 @@
             <ul>
               <li class="content" v-for="(cc,index) in bb.foods">
                 <!--每个商品-->
-                <div class="every" @click="llevjson(cc)">
+                <div class="every">
                   <img class="photo fl" :src="bb.foods[index].icon" alt="">
                   <div class="every_r">
                     <div class="name">{{bb.foods[index].name}}</div>
@@ -54,7 +54,6 @@
     component: {},
     data() {
       return {
-        changeRed: -1,
         list: "",
         btnflag:false,
         listHeight:[],
@@ -62,12 +61,11 @@
         clickEvent:false,
       };
     },
-    created() {
+    created(){
       var _this = this;
       this.$axios.get("/api/sell/buyer/product/list")
         .then(function (res) {
           _this.list = res.data.data;
-          console.log(_this.list);
         })
     },
     mounted(){
@@ -82,10 +80,8 @@
           click:true
         })
         this.rights = new BScroll(this.$refs.right,{
+          probeType:3,
           click:true
-        })
-        this.rights = new BScroll(this.$refs.right,{
-          probeType:3
         })
         this.rights.on("scroll",(pos)=>{
           this.scrollY = Math.abs(Math.round(pos.y))
@@ -153,13 +149,16 @@
     background-color: #ffffff;
   }
   .shop_left {
-    width: 200px;
+    width: 160px;
     font-weight: 200;
     float: left;
     margin-top: 2px;
   }
 
-  .shop_left > ul > li {
+  ul,li{
+    list-style: none;
+  }
+  .shop_left ul > li {
     width: 100%;
     line-height: 84px;
     font-size: 22px;
@@ -167,19 +166,15 @@
     background-color: #f3f5f7;
   }
 
-  .shop_left > ul > li > div {
+  .shop_left li > div {
     width: 112px;
     margin: 0 auto;
     height: 84px;
   }
 
   .shop_right {
-    width: 600px;
-    left: 200px;
-    height: 100%;
-    margin-top: 2px;
-    position: absolute;
-    overflow: hidden;
+    width: 565px;
+    float: left;
   }
 
   .top {
@@ -198,7 +193,6 @@
     width: 493px;
     margin: 36px auto;
     border-bottom: 1px solid gainsboro;
-
   }
   .fl{
     float: left;
