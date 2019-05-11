@@ -37,10 +37,9 @@
 </template>
 
 <script>
-  import BScroll from 'better-scroll';
   export default {
     name: "hot",
-    component: {},
+    components: {},
     data() {
       return {
         changeRed: -1,
@@ -52,7 +51,6 @@
       this.$axios.get("/api/sell/buyer/product/list")
         .then(function (res) {
           _this.list = res.data.data;
-          // console.log(_this.list);
         })
     },
     methods: {
@@ -61,7 +59,8 @@
         // console.log(index);
       },
       llxqevery(llevjson){
-        console.log(llevjson)
+        // console.log(llevjson);
+        this.$store.commit("llgetflag",{comflag:true,llevjson:llevjson});
       }
     }
   }

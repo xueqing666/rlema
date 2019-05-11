@@ -4,28 +4,15 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
-    count: 1
-  },
-  getters: {
-    getStateCount: function (state) {
-      return state.count + 1
-    }
+    llflag:false,
+    llevjson:"",
   },
   mutations: {
-    add(state) {
-      state.count = state.count + 1
-    },
-    reduction(state) {
-      state.count = state.count - 1
+    llgetflag(state,data){
+      console.log(data);
+      state.llflag = data.comflag;
+      state.llevjson = data.llevjson;
     }
   },
-  actions: {
-    addFun(context) {
-      context.commit("add")
-    },
-    reductionFun(context) {
-      context.commit("reduction")
-    }
-  }
 });
 export default store;

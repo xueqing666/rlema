@@ -1,13 +1,13 @@
 <template>
   <div class="ll-xiangqing">
     <div>
-      <div class="llxq"></div>
+      <div class="llxq"  :style="{backgroundImage:'url('+llevjson.icon+')'}"></div>
       <div class="llxqjieshao">
-        <p>皮蛋瘦肉粥</p>
+        <p>{{llevjson.name}}</p>
         <span>月售1132份</span>
         <span>好评率100%</span>
         <div>
-          <span>￥24</span>
+          <span>￥{{llevjson.price}}</span>
           <span>￥28</span>
         </div>
         <div class="llbuycar">加入购物车</div>
@@ -17,14 +17,15 @@
         <div>
           我是商品介绍我是商品介绍我是商品介
           绍我是商品介绍我是商品介绍我是商品
-          介绍我是商品介绍vv我是商品介绍</div>
+          介绍我是商品介绍vv我是商品介绍
+        </div>
       </div>
     </div>
     <div class="ll-pingjia-manyi">
       <div class="ll-pingjia-manyi-top">
-        <button>全部 <span>57</span></button>
-        <button>满意 <span>47</span></button>
-        <button>不满意 <span>10</span></button>
+        <button>全部 <span>10</span></button>
+        <button>推荐 <span>10</span></button>
+        <button>吐槽<span>10</span></button>
       </div>
       <div class="ll-pingjia-manyi-bot">
         <img src="../../assets/svg/check_circle.svg" alt="" style="height:24px;width:24px;">
@@ -52,9 +53,11 @@
 
       }
     },
-    methods:{
-
-    },
+    computed:{
+      llevjson(){
+        return this.$store.state.llevjson;
+      }
+    }
   }
 </script>
 <style>

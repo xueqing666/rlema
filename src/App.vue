@@ -13,7 +13,7 @@
     <shopmes v-if="shopclick" @shopmesclosebaba="shopmesclosebaba"></shopmes>
 
     <!--商品详情页-->
-    <detailpage></detailpage>
+    <detailpage v-if="llflag"></detailpage>
   </div>
 </template>
 
@@ -32,15 +32,20 @@
     },
     data() {
       return {
-        shopclick:false
+        shopclick:false,
       }
     },
     methods: {
       shopclickbaba:function (flag) {
-        this.shopclick = flag
+        this.shopclick = flag;
       },
       shopmesclosebaba:function (flag) {
         this.shopclick = flag
+      }
+    },
+    computed:{
+      llflag(){
+        return this.$store.state.llflag;
       }
     }
   }
