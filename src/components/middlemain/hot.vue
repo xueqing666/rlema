@@ -1,65 +1,149 @@
 <template>
-  <div>
-    <div class="shop_left">
-      <ul>
-        <li v-for="(aa,index) in list" @click="ChangeWhite(index)" :class="{white:changeRed == index}">
-          <div>
-            {{aa.name}}
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="shop_right">
-      <div class="classification" v-for="bb in list">
-        <div class="top">{{bb.name}}</div>
-        <div class="content" v-for="(cc,index) in bb.foods">
-          <div class="every">
-            <div class="every_left">
-              <img :src="bb.foods[index].icon" alt="">
+  <div class="xxlshoplist">
+    <div class="wrap">
+      <!--左边列表-->
+      <div class="shop_left" ref="left">
+        <ul>
+          <li v-for="(aa,index) in list" :class="{current:currentIndex==index}" @click="selectItem(index,$event)">
+            <div>
+              {{aa.name}}
             </div>
-            <div class="every_middle">
-            <div class="every_middle_top">{{bb.foods[index].name}}</div>
-            <div class="every_middle_button">月售1132份 好评率100%</div>
-            <div class="every_middle_foot">￥{{bb.foods[index].price}}<span>￥28</span></div>
-          </div>
-            <div class="every_right">
-              <span><img src="../../img/remove_circle_outline.svg" alt=""></span>
-              <span class="singletonNumber">1</span>
-              <span><img src="../../img/add_circle.svg" alt=""></span>
-            </div>
-          </div>
-        </div>
+          </li>
+        </ul>
+      </div>
+      <!--右边图片和信息-->
+      <div class="shop_right" ref="right">
+        <ul>
+          <li class="list right-item right-item-hook" v-for="bb in list">
+            <!--各类名字-->
+            <h1 class="top">{{bb.name}}</h1>
+            <!--各类详情-->
+            <ul>
+              <li class="content" v-for="(cc,index) in bb.foods">
+                <!--每个商品-->
+                <div class="every">
+                  <img class="photo fl" :src="bb.foods[index].icon" alt="">
+                  <div class="every_r">
+                    <div class="name">{{bb.foods[index].name}}</div>
+                    <div class="sendnum">月售1132份 好评率100%</div>
+                    <div class="pnum">
+                      <div class="price fl">￥{{bb.foods[index].price}}<span>￥28</span></div>
+                      <div class="drbtn">
+                        <span v-if="btnflag"><icon class="resbtn" name="remove_circle_outline" :w="20"></icon></span>
+                        <span v-if="btnflag">1</span>
+                        <span @click="addbtn"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  //列表滚动
+  import BScroll from "better-scroll"
+
   export default {
     name: "hot",
     component: {},
     data() {
       return {
-        changeRed: -1,
         list: "",
+        btnflag:false,
+        listHeight:[],
+        scrollY:0, //实时获取当前Y轴的高度
+        clickEvent:false,
       };
     },
-    created() {
+    created(){
       var _this = this;
       this.$axios.get("/api/sell/buyer/product/list")
         .then(function (res) {
           _this.list = res.data.data;
         })
     },
+    mounted(){
+      this.$nextTick(()=>{
+        this._initScroll()
+        this._getHeight()
+      })
+    },
     methods: {
-      ChangeWhite(index) {
-        this.changeRed = index;
+      _initScroll(){
+        this.lefts = new BScroll(this.$refs.left,{
+          click:true
+        })
+        this.rights = new BScroll(this.$refs.right,{
+          probeType:3
+        })
+        this.rights.on("scroll",(pos)=>{
+          this.scrollY = Math.abs(Math.round(pos.y))
+        })
+      },
+      _getHeight(){
+        let rightItems = this.$refs.right.getElementsByClassName("right-item-hook")
+        let height = 0;
+        this.listHeight.push(height)
+        for (let i = 0; i <rightItems.length ; i++) {
+          let item = rightItems[i]
+          height += item.clientHeight;
+          this.listHeight.push(height)
+        }
+      },
+      selectItem(index,event){
+        this.clickEvent = true;
+        if(!event._constructed){
+          return
+        }else{
+          let rightItems = this.$refs.right.getElementsByClassName("right-item-hook")
+          let el = rightItems[index]
+          this.rights.scrollToElement(el,300)
+        }
+      },
+
+      addbtn:function () {
+        this.btnflag = true;
+      }
+    },
+    computed:{
+      //计算属性
+      currentIndex(){
+        for (let i = 0; i <this.listHeight.length ; i++) {
+          let height = this.listHeight[i]
+          let height2 = this.listHeight[i+1]
+          if(!height2||(this.scrollY>=height&&this.scrollY<height2)){
+            if(this.clickEvent){
+              return i+1
+            }else{
+              return i
+            }
+          }
+        }
+        return 0
       }
     }
   }
 </script>
 
 <style scoped>
+  .wrap{
+    width: 100%;
+    height: 924px;
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  .current{
+    background-color: #ffffff;
+  }
   .shop_left {
     width: 160px;
     font-weight: 200;
@@ -67,7 +151,10 @@
     margin-top: 2px;
   }
 
-  ul > li {
+  ul,li{
+    list-style: none;
+  }
+  .shop_left ul > li {
     width: 100%;
     line-height: 84px;
     font-size: 22px;
@@ -75,7 +162,7 @@
     background-color: #f3f5f7;
   }
 
-  li > div {
+  .shop_left li > div {
     width: 112px;
     margin: 0 auto;
     height: 84px;
@@ -102,42 +189,31 @@
     width: 493px;
     margin: 36px auto;
     border-bottom: 1px solid gainsboro;
-
   }
-
+  .fl{
+    float: left;
+  }
   .every {
     overflow: hidden;
   }
-
-  .every_left {
-    float: left;
-  }
-
-  .every_left img {
+  .every .photo{
     width: 100px;
     height: 100px;
+    margin-right: 20px;
   }
-
-  .every_middle {
-    float: left;
-    margin-left: 20px;
-  }
-
-  .every_middle_top {
+  .every_r .name {
     font-size: 28px;
     color: rgb(7, 17, 27);
     line-height: 28px;
     font-weight: 700;
   }
-
-  .every_middle_button {
+  .every_r .sendnum {
     font-size: 20px;
     line-height: 50px;
     color: rgb(147, 153, 159);
     text-align: left;
   }
-
-  .every_middle_foot {
+  .every_r .price {
     font-size: 28px;
     color: rgb(240, 20, 20);
     font-weight: 700;
@@ -145,7 +221,7 @@
     text-align: left;
   }
 
-  .every_middle_foot > span {
+  .every_r .price span {
     font-size: 20px;
     color: rgb(147, 153, 159);
     font-weight: 700;
@@ -153,22 +229,10 @@
     text-decoration: line-through;
     margin-left: 16px;
   }
-
-  .every_right {
-    width: 110px;
+  .every_r .drbtn{
     float: right;
-    margin-top: 80px;
-    font-size: 26px;
-    color: rgb(147, 153, 159);
   }
-
-  .every_right span img {
-    width: 40px;
-    height: 40px;
-    vertical-align: middle;
-  }
-
-  .white {
-    background-color: white;
+  .addbtn,.resbtn{
+    color: #00a0dc;
   }
 </style>

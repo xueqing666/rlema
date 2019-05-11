@@ -12,7 +12,6 @@
     <!--店铺信息-->
     <shopmes v-if="shopclick" @shopmesclosebaba="shopmesclosebaba"></shopmes>
 
-
   </div>
 </template>
 
@@ -47,5 +46,6 @@
   *{
     margin:0;
     padding:0;
+    box-sizing: border-box;
   }
 </style>
