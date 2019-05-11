@@ -19,7 +19,7 @@
             <h1 class="top">{{bb.name}}</h1>
             <!--各类详情-->
             <ul>
-              <li class="content" v-for="(cc,index) in bb.foods">
+              <li class="content" v-for="(cc,index) in bb.foods" @click="">
                 <!--每个商品-->
                 <div class="every">
                   <img class="photo fl" :src="bb.foods[index].icon" alt="">
@@ -56,10 +56,10 @@
       return {
         changeRed: -1,
         list: "",
-        btnflag:false,
-        listHeight:[],
-        scrollY:0, //实时获取当前Y轴的高度
-        clickEvent:false,
+        btnflag: false,
+        listHeight: [],
+        scrollY: 0, //实时获取当前Y轴的高度
+        clickEvent: false,
       };
     },
     created() {
@@ -70,59 +70,62 @@
           console.log(_this.list);
         })
     },
-    mounted(){
-      this.$nextTick(()=>{
-        this._initScroll()
+    mounted() {
+      this.$nextTick(() => {
+        this._initScroll();
         this._getHeight()
       })
     },
     methods: {
-      _initScroll(){
-        this.lefts = new BScroll(this.$refs.left,{
-          click:true
-        })
-        this.rights = new BScroll(this.$refs.right,{
-          probeType:3
-        })
-        this.rights.on("scroll",(pos)=>{
+      _initScroll() {
+        this.lefts = new BScroll(this.$refs.left, {
+          click: true
+        });
+        this.rights = new BScroll(this.$refs.right, {
+          probeType: 3
+        });
+        this.rights = new BScroll(this.$refs.right, {
+          click :true
+        });
+        this.rights.on("scroll", (pos) => {
           this.scrollY = Math.abs(Math.round(pos.y))
         })
       },
-      _getHeight(){
+      _getHeight() {
         let rightItems = this.$refs.right.getElementsByClassName("right-item-hook")
         let height = 0;
-        this.listHeight.push(height)
-        for (let i = 0; i <rightItems.length ; i++) {
-          let item = rightItems[i]
+        this.listHeight.push(height);
+        for (let i = 0; i < rightItems.length; i++) {
+          let item = rightItems[i];
           height += item.clientHeight;
           this.listHeight.push(height)
         }
       },
-      selectItem(index,event){
+      selectItem(index, event) {
         this.clickEvent = true;
-        if(!event._constructed){
+        if (!event._constructed) {
           return
-        }else{
+        } else {
           let rightItems = this.$refs.right.getElementsByClassName("right-item-hook")
-          let el = rightItems[index]
-          this.rights.scrollToElement(el,300)
+          let el = rightItems[index];
+          this.rights.scrollToElement(el, 300)
         }
       },
 
-      addbtn:function () {
+      addbtn: function () {
         this.btnflag = true;
       }
     },
-    computed:{
+    computed: {
       //计算属性
-      currentIndex(){
-        for (let i = 0; i <this.listHeight.length ; i++) {
-          let height = this.listHeight[i]
-          let height2 = this.listHeight[i+1]
-          if(!height2||(this.scrollY>=height&&this.scrollY<height2)){
-            if(this.clickEvent){
-              return i+1
-            }else{
+      currentIndex() {
+        for (let i = 0; i < this.listHeight.length; i++) {
+          let height = this.listHeight[i];
+          let height2 = this.listHeight[i + 1];
+          if (!height2 || (this.scrollY >= height && this.scrollY < height2)) {
+            if (this.clickEvent) {
+              return i + 1
+            } else {
               return i
             }
           }
@@ -134,7 +137,7 @@
 </script>
 
 <style scoped>
-  .wrap{
+  .wrap {
     width: 100%;
     height: 924px;
     display: flex;
@@ -143,9 +146,11 @@
     left: 0;
     overflow: hidden;
   }
-  .current{
+
+  .current {
     background-color: #ffffff;
   }
+
   .shop_left {
     width: 200px;
     font-weight: 200;
@@ -192,31 +197,37 @@
     width: 493px;
     margin: 36px auto;
     border-bottom: 1px solid gainsboro;
-
+    list-style: none;
   }
-  .fl{
+
+  .fl {
     float: left;
   }
+
   .every {
     overflow: hidden;
   }
-  .every .photo{
+
+  .every .photo {
     width: 100px;
     height: 100px;
     margin-right: 20px;
   }
+
   .every_r .name {
     font-size: 28px;
     color: rgb(7, 17, 27);
     line-height: 28px;
     font-weight: 700;
   }
+
   .every_r .sendnum {
     font-size: 20px;
     line-height: 50px;
     color: rgb(147, 153, 159);
     text-align: left;
   }
+
   .every_r .price {
     font-size: 28px;
     color: rgb(240, 20, 20);
@@ -233,10 +244,12 @@
     text-decoration: line-through;
     margin-left: 16px;
   }
-  .every_r .drbtn{
+
+  .every_r .drbtn {
     float: right;
   }
-  .addbtn,.resbtn{
+
+  .addbtn, .resbtn {
     color: #00a0dc;
   }
 </style>

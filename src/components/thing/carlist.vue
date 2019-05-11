@@ -12,10 +12,7 @@
             <ul>
               <li>
                 <div class="xxl_small">
-                  <div class="xxl_name" v-for="product in products">莲子核桃黑米粥
-                    <button @click="reductionFun">-</button>
-                    <button @click="addFun">+</button>
-                    <span>{{product.flag}}</span>
+                  <div class="xxl_name">莲子核桃黑米粥
                   </div>
                   <div class="xxl_money">￥<span>10</span></div>
                   <div class="xxl_operation">
@@ -39,18 +36,11 @@
     component: {},
     data() {
       return {
-        products:this.$store.state.products
+        products: this.$store.state.products
       }
     },
     methods: {
-      reductionFun() {
-        this.$store.dispatch('minusPriceAsync',false)
-        console.log(this.products);
-      },
-      addFun() {
-        this.$store.commit('minusPrice',true);
-        console.log(this.products);
-      }
+
     }
   }
 </script>
