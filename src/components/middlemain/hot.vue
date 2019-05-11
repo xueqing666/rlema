@@ -49,7 +49,6 @@
   //列表滚动
   import BScroll from "better-scroll"
 
-
   export default {
     name: "hot",
     component: {},
@@ -108,9 +107,12 @@
           this.rights.scrollToElement(el,300)
         }
       },
-
       addbtn:function () {
         this.btnflag = true;
+      },
+      llevjson(data){
+        // console.log(data);
+        this.$store.commit("llgetflag",{comflag:true,llevjson:data})
       }
     },
     computed:{

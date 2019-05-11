@@ -8,8 +8,6 @@ const state = {
     llevjson:"",
 }
 
-
-
 const store = new Vuex.Store({
   state,
   //实时监听state值得变化
