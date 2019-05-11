@@ -12,10 +12,10 @@
             <ul>
               <li>
                 <div class="xxl_small">
-                  <div class="xxl_name">莲子核桃黑米粥
+                  <div class="xxl_name" v-for="product in products">莲子核桃黑米粥
                     <button @click="reductionFun">-</button>
                     <button @click="addFun">+</button>
-                    <span>{{count1}}</span>
+                    <span>{{product.flag}}</span>
                   </div>
                   <div class="xxl_money">￥<span>10</span></div>
                   <div class="xxl_operation">
@@ -34,28 +34,22 @@
 </template>
 
 <script>
-  import {mapState,mapActions,mapGetters} from "vuex";
   export default {
     name: "carlist",
     component: {},
     data() {
-      return {}
-    },
-    computed:{
-      ...mapState({
-        count1:state=>state.count
-      })
+      return {
+        products:this.$store.state.products
+      }
     },
     methods: {
       reductionFun() {
-        this.$store.dispatch("reductionFun");
-        console.log("计算前:" + this.$store.state.count);
-        console.log("计算后:" + this.$store.getters.getStateCount);
+        this.$store.dispatch('minusPriceAsync',false)
+        console.log(this.products);
       },
       addFun() {
-        this.$store.dispatch("addFun");
-        console.log("计算前:" + this.$store.state.count);
-        console.log("计算后:" + this.$store.getters.getStateCount);
+        this.$store.commit('minusPrice',true);
+        console.log(this.products);
       }
     }
   }

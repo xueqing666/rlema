@@ -54,6 +54,7 @@
     component: {},
     data() {
       return {
+        changeRed: -1,
         list: "",
         btnflag:false,
         listHeight:[],
@@ -61,11 +62,12 @@
         clickEvent:false,
       };
     },
-    created(){
+    created() {
       var _this = this;
       this.$axios.get("/api/sell/buyer/product/list")
         .then(function (res) {
           _this.list = res.data.data;
+          console.log(_this.list);
         })
     },
     mounted(){
@@ -151,16 +153,13 @@
     background-color: #ffffff;
   }
   .shop_left {
-    width: 160px;
+    width: 200px;
     font-weight: 200;
     float: left;
     margin-top: 2px;
   }
 
-  ul,li{
-    list-style: none;
-  }
-  .shop_left ul > li {
+  .shop_left > ul > li {
     width: 100%;
     line-height: 84px;
     font-size: 22px;
@@ -168,15 +167,19 @@
     background-color: #f3f5f7;
   }
 
-  .shop_left li > div {
+  .shop_left > ul > li > div {
     width: 112px;
     margin: 0 auto;
     height: 84px;
   }
 
   .shop_right {
-    width: 565px;
-    float: left;
+    width: 600px;
+    left: 200px;
+    height: 100%;
+    margin-top: 2px;
+    position: absolute;
+    overflow: hidden;
   }
 
   .top {
@@ -195,6 +198,7 @@
     width: 493px;
     margin: 36px auto;
     border-bottom: 1px solid gainsboro;
+
   }
   .fl{
     float: left;
