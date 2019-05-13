@@ -1,16 +1,17 @@
 <template>
   <div class="ll-xiangqing">
     <div>
-      <div class="llxq"  :style="{backgroundImage:'url('+llevjson.icon+')'}"></div>
+      <div class="llxq" @click="disappear" :style="{backgroundImage:'url('+llevjson.icon+')'}"></div>
       <div class="llxqjieshao">
         <p>{{llevjson.name}}</p>
         <span>月售1132份</span>
         <span>好评率100%</span>
         <div>
           <span>￥{{llevjson.price}}</span>
+          {{llevjson.index}}
           <span>￥28</span>
         </div>
-        <div class="llbuycar">加入购物车</div>
+        <div class="llbuycar" @click="addbtn(llevjson)">加入购物车</div>
       </div>
       <div class="llspjs">
         <p>商品介绍</p>
@@ -50,12 +51,42 @@
     name:"ll-xiangqing",
     data(){
       return {
-
+        flag:true,
+        carArr:[]
       }
     },
     computed:{
       llevjson(){
         return this.$store.state.llevjson;
+      }
+    },
+    methods:{
+      addbtn:function (json) {
+        //判断是否主页添加
+        if(this.$store.state.carArr!=""){
+          this.carArr = this.$store.state.carArr
+        }
+        //从未添加过
+        if(!json.count){
+          Vue.set(json,"flag",true)
+          Vue.set(json,"count",1);
+          this.carArr.push(json)
+        }else{
+          json.flag = true;
+          //添加过.直接数量加一
+          for (let i = 0; i <this.carArr.length ; i++) {
+            if(this.carArr[i].id==json.id){
+              this.carArr[i].count++;
+              break;
+            }
+          }
+        }
+        // console.log("添加成功");
+        //传值给vuex
+        this.$store.commit("carArr",this.carArr)
+      },
+      disappear(){
+        this.$store.commit("llgetflag",false);
       }
     }
   }

@@ -58,7 +58,7 @@
         listHeight:[],
         scrollY:0, //实时获取当前Y轴的高度
         clickEvent:false,
-        carArr:[]
+        carArr: []
       };
     },
     created(){
@@ -109,6 +109,10 @@
       },
       //点击加好,添加到购物车
       addbtn:function (json) {
+        //判断是否详情页添加
+        if(this.$store.state.carArr!=""){
+          this.carArr = this.$store.state.carArr
+        }
         //从未添加过
         if(!json.count){
           Vue.set(json,"flag",true)
