@@ -12,16 +12,14 @@
             <ul>
               <li>
                 <div class="xxl_small">
-                  <div class="xxl_name" v-for="product in carArr">莲子核桃黑米粥
-                    <button @click="reductionFun">-</button>
-                    <button @click="addFun">+</button>
-                    <span>{{product.flag}}</span>
-                  </div>
-                  <div class="xxl_money">￥<span>10</span></div>
-                  <div class="xxl_operation">
-                    <span><icon name="remove_circle_outline" class="xxl_remove"></icon></span>
-                    <span class="xxl_singletonNumber">88</span>
-                    <span><icon name="add_circle" class="xxl_add"></icon></span>
+                  <div class="xxl_name" v-for="item in carArr">
+                    <span>{{item.name}}</span>
+                    <span class="xxl_money">￥<span>{{item.price}}</span></span>
+                    <div class="drbtn">
+                      <span @click="resbtn(item)"><icon class="resbtn" name="remove_circle_outline" :w="20"></icon></span>
+                      <span>{{item.count}}</span>
+                      <span @click="addbtn(item)"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -42,20 +40,57 @@
         return this.$store.state.carArr
       }
     },
-    data() {
-      return {
-        products:this.$store.state.products
-      }
-    },
+    // data() {
+    //   return {
+    //     products:this.$store.state.products
+    //   }
+    // },
     methods: {
-      reductionFun() {
-        this.$store.dispatch('minusPriceAsync',false)
-        console.log(this.products);
+      //点击加好,添加到购物车
+      addbtn:function (json) {
+        //从未添加过
+        if(!json.count){
+          Vue.set(json,"flag",true)
+          Vue.set(json,"count",1);
+          this.carArr.push(json)
+        }else{
+          json.flag = true;
+          //添加过.直接数量加一
+          for (let i = 0; i <this.carArr.length ; i++) {
+            if(this.carArr[i].id==json.id){
+              this.carArr[i].count++;
+              break;
+            }
+          }
+        }
+        console.log("添加成功");
+        //传值给vuex
+        this.$store.commit("carArr",this.carArr)
       },
-      addFun() {
-        this.$store.commit('minusPrice',true);
-        console.log(this.products);
-      }
+      //点击减号,减少购物车中的物件
+      resbtn:function(json){
+        if(json.count==1){
+          json.flag = false;
+          json.count=0
+          for (let i = 0; i <this.carArr.length ; i++) {
+            if(this.carArr[i].id==json.id){
+              this.carArr.splice(i,1);
+              i--
+              break;
+            }
+          }
+        }else{
+          for (let i = 0; i <this.carArr.length ; i++) {
+            if(this.carArr[i].id==json.id){
+              this.carArr[i].count--;
+              break;
+            }
+          }
+        }
+        //传值给vuex
+        console.log("减少成功");
+        this.$store.commit("carArr",this.carArr)
+      },
     }
   }
 </script>
@@ -67,14 +102,14 @@
     position: absolute;
     top: 0;
   }
-
+  /*黑色部分*/
   .xxl_black_top {
     width: 100%;
     height: 400px;
     background-color: rgba(7, 17, 27, 0.6);
     blur: 10px;
   }
-
+  /*内容*/
   .xxl_black_bottom {
     height: 611px;
   }
@@ -111,7 +146,7 @@
   .xxl_scrollDiv {
     width: 100%;
     position: absolute;
-    height: 690px;
+    height: 500px;
     background-color: white;
   }
 

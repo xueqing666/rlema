@@ -22,6 +22,12 @@
   export default {
     name: "footercar",
     components: {carlist},
+    computed:{
+      carArr(){
+        console.log("this.$store.state.carArr");
+        return this.$store.state.carArr
+      }
+    },
     data() {
       return {
         flag :false
