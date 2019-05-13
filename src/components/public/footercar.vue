@@ -32,7 +32,7 @@
       },
       howmuch(){
         var much = 0;
-        console.log(this.$store.state.carArr);
+        // console.log(this.$store.state.carArr);
         for(var i=0;i<this.$store.state.carArr.length;i++){
           much += Number(this.$store.state.carArr[i].count*this.$store.state.carArr[i].price)
         }
