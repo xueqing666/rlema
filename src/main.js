@@ -25,7 +25,7 @@ import store from "./store/index.js";
 new Vue({
   el: '#app',
   router,
-  store,
+  store, //使用store
   components: { App },
   template: '<App/>',
 });

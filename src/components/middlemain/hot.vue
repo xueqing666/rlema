@@ -54,7 +54,6 @@
     component: {},
     data() {
       return {
-        changeRed: -1,
         list: "",
         btnflag: false,
         listHeight: [],
@@ -62,7 +61,7 @@
         clickEvent: false,
       };
     },
-    created() {
+    created(){
       var _this = this;
       this.$axios.get("/api/sell/buyer/product/list")
         .then(function (res) {
@@ -82,10 +81,8 @@
           click:true
         })
         this.rights = new BScroll(this.$refs.right,{
+          probeType:3,
           click:true
-        })
-        this.rights = new BScroll(this.$refs.right,{
-          probeType:3
         })
         this.rights.on("scroll",(pos)=>{
           this.scrollY = Math.abs(Math.round(pos.y))
@@ -162,7 +159,10 @@
     margin-top: 2px;
   }
 
-  .shop_left > ul > li {
+  ul,li{
+    list-style: none;
+  }
+  .shop_left ul > li {
     width: 100%;
     line-height: 84px;
     font-size: 22px;
