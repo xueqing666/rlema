@@ -125,7 +125,7 @@
   }
 
   .xq-foot .pay {
-    width: 210px;
+    width: 200px;
     height: 100%;
     font-size: 24px;
     color: rgb(255, 255, 255, .4);
@@ -137,7 +137,7 @@
   }
 
   .xq-foot .pay-active {
-    width: 210px;
+    width: 200px;
     height: 100%;
     font-size: 24px;
     color: rgb(255, 255, 255, .4);
