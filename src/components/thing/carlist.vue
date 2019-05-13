@@ -37,6 +37,11 @@
   export default {
     name: "carlist",
     component: {},
+    computed:{
+      carArr(){
+        return this.$store.state.carArr
+      }
+    },
     data() {
       return {
         products: this.$store.state.products,
