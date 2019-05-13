@@ -45,7 +45,6 @@
   height: 100px;
   background-color: black;
   padding-left: 36px;
-  z-index: 2;
   box-sizing: border-box;
 }
 .xq-foot .fl{

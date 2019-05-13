@@ -6,7 +6,7 @@ Vue.use(Vuex);
 const state = {
     llflag:false,
     llevjson:"",
-
+    carArr:""
 }
 
 const store = new Vuex.Store({
@@ -17,8 +17,10 @@ const store = new Vuex.Store({
       state.llflag = data.comflag;
       state.llevjson = data.llevjson;
     },
-
-
+    carArr(state,data){
+      state.carArr = data;
+      console.log(data);
+    }
   }
 });
 

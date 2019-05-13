@@ -96,7 +96,6 @@
       this.$axios.get("/api/sell/shop/info?shopId=1544670774658295899")
         .then(function (res) {
           _this.lljson = res.data.data;
-          // console.log(_this.lljson.pics);
         })
     },
   }
