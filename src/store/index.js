@@ -19,10 +19,8 @@ const store = new Vuex.Store({
     },
     carArr(state,data){
       state.carArr = data;
-      console.log(data);
     }
   }
 });
-
 
 export default store;

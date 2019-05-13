@@ -126,7 +126,7 @@
             }
           }
         }
-        console.log("添加成功");
+        // console.log("添加成功");
         //传值给vuex
         this.$store.commit("carArr",this.carArr)
       },
@@ -151,7 +151,7 @@
           }
         }
         //传值给vuex
-        console.log("减少成功");
+        // console.log("减少成功");
         this.$store.commit("carArr",this.carArr)
       },
       //物品详情页
