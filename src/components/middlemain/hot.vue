@@ -22,7 +22,7 @@
               <li class="content" v-for="(cc,index) in bb.foods">
                 <!--每个商品-->
                 <div class="every">
-                  <img class="photo fl" :src="bb.foods[index].icon" alt="">
+                  <img class="photo fl" @click="llevjson(cc)" :src="bb.foods[index].icon" alt="">
                   <div class="every_r">
                     <div class="name">{{bb.foods[index].name}}</div>
                     <div class="sendnum">月售1132份 好评率100%</div>

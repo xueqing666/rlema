@@ -6,6 +6,7 @@ Vue.use(Vuex);
 const state = {
     llflag:false,
     llevjson:"",
+
 }
 
 const store = new Vuex.Store({
@@ -15,7 +16,9 @@ const store = new Vuex.Store({
     llgetflag(state,data){
       state.llflag = data.comflag;
       state.llevjson = data.llevjson;
-    }
+    },
+
+
   }
 });
 

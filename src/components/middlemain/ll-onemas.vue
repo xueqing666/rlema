@@ -96,7 +96,7 @@
       this.$axios.get("/api/sell/shop/info?shopId=1544670774658295899")
         .then(function (res) {
           _this.lljson = res.data.data;
-          console.log(_this.lljson.pics);
+          // console.log(_this.lljson.pics);
         })
     },
   }
@@ -252,15 +252,12 @@
     padding:36px 0 24px 36px;
     overflow:hidden;
   }
-  /*.ll-onemas-shijin>div:nth-child(2){*/
-    /*margin-left:36px;*/
-  /*}*/
   .ll-onemas-shijin>div{
     display:inline-block;
     height: 180px;
     width:240px;
     color:red;
-    margin-left:12px;
+    margin-left:5px;
     background-size:100% 100%;
   }
   .ll-onemas .ll-onemas-xinxi{
