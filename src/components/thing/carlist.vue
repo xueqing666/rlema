@@ -7,15 +7,12 @@
           <span class="xxl_GWC">购物车</span>
           <span class="xxl_emptyAll">清空</span>
         </div>
-        <div class="xxl_shopCar_content">
-          <div class="xxl_scrollDiv">
+        <div class="xxl_shopCar_content" ref="wrap">
+          <div class="xxl_scrollDiv" >
             <ul>
-              <li>
+              <li v-for="shoplist in 20">
                 <div class="xxl_small">
-                  <div class="xxl_name" v-for="product in carArr">莲子核桃黑米粥
-                    <button @click="reductionFun">-</button>
-                    <button @click="addFun">+</button>
-                    <span>{{product.flag}}</span>
+                  <div class="xxl_name">莲子核桃黑米粥
                   </div>
                   <div class="xxl_money">￥<span>10</span></div>
                   <div class="xxl_operation">
@@ -34,6 +31,9 @@
 </template>
 
 <script>
+  //列表滚动
+  import BScroll from "better-scroll";
+
   export default {
     name: "carlist",
     component: {},
@@ -44,19 +44,39 @@
     },
     data() {
       return {
-        products:this.$store.state.products
+        products: this.$store.state.products,
+        listHeight: [],
+        scrollY: 0,//实时获取当前Y轴的高度
       }
     },
     methods: {
-      reductionFun() {
-        this.$store.dispatch('minusPriceAsync',false)
-        console.log(this.products);
+      _initScroll() {
+        this.wraps = new BScroll(this.$refs.wrap, {
+          probeType: 3,
+          click: true
+        });
+        //this.rights这个对象监听事件,时时获取位置pos.y
+        this.wraps.on('scroll', (pos) => {
+          this.scrollY = Math.abs(Math.round(pos.y))
+        })
       },
-      addFun() {
-        this.$store.commit('minusPrice',true);
-        console.log(this.products);
+      _getHeight() {
+        let rightItems = this.$refs.wrap.getElementsByClassName('xxl_shopCar_content');
+        let height = 0;
+        this.listHeight.push(height);
+        for (let i = 0; i < rightItems.length; i++) {
+          let item = rightItems[i];
+          height += item.clientHeight;
+          this.listHeight.push(height)
+        }
       }
-    }
+    },
+    mounted() {
+      this.$nextTick(() => {
+        this._initScroll();
+        this._getHeight()
+      })
+    },
   }
 </script>
 
@@ -106,12 +126,14 @@
   .xxl_shopCar_content {
     width: 100%;
     position: relative;
+    height: 785px;
+    overflow: hidden;
+    background-color: palevioletred;
   }
 
   .xxl_scrollDiv {
     width: 100%;
     position: absolute;
-    height: 690px;
     background-color: white;
   }
 

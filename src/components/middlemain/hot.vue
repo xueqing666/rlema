@@ -21,8 +21,8 @@
             <ul>
               <li class="content" v-for="(cc,index) in bb.foods">
                 <!--每个商品-->
-                <div class="every">
-                  <img class="photo fl" @click="llevjson(cc)" :src="bb.foods[index].icon" alt="">
+                <div class="every" @click="llevjson(cc)">
+                  <img class="photo fl" :src="bb.foods[index].icon" alt="">
                   <div class="every_r">
                     <div class="name">{{bb.foods[index].name}}</div>
                     <div class="sendnum">月售1132份 好评率100%</div>
@@ -68,9 +68,9 @@
           _this.list = res.data.data;
         })
     },
-    mounted(){
-      this.$nextTick(()=>{
-        this._initScroll()
+    mounted() {
+      this.$nextTick(() => {
+        this._initScroll();
         this._getHeight()
       })
     },
@@ -80,33 +80,31 @@
           click:true
         })
         this.rights = new BScroll(this.$refs.right,{
-          click:true
-        })
-        this.rights = new BScroll(this.$refs.right,{
           probeType:3,
+          click:true
         })
         this.rights.on("scroll",(pos)=>{
           this.scrollY = Math.abs(Math.round(pos.y))
         })
       },
-      _getHeight(){
+      _getHeight() {
         let rightItems = this.$refs.right.getElementsByClassName("right-item-hook")
         let height = 0;
-        this.listHeight.push(height)
-        for (let i = 0; i <rightItems.length ; i++) {
-          let item = rightItems[i]
+        this.listHeight.push(height);
+        for (let i = 0; i < rightItems.length; i++) {
+          let item = rightItems[i];
           height += item.clientHeight;
           this.listHeight.push(height)
         }
       },
-      selectItem(index,event){
+      selectItem(index, event) {
         this.clickEvent = true;
-        if(!event._constructed){
+        if (!event._constructed) {
           return
-        }else{
+        } else {
           let rightItems = this.$refs.right.getElementsByClassName("right-item-hook")
-          let el = rightItems[index]
-          this.rights.scrollToElement(el,300)
+          let el = rightItems[index];
+          this.rights.scrollToElement(el, 300)
         }
       },
       //点击加好,添加到购物车
@@ -159,16 +157,16 @@
         this.$store.commit("llgetflag",{comflag:true,llevjson:data})
       }
     },
-    computed:{
+    computed: {
       //计算属性
-      currentIndex(){
-        for (let i = 0; i <this.listHeight.length ; i++) {
-          let height = this.listHeight[i]
-          let height2 = this.listHeight[i+1]
-          if(!height2||(this.scrollY>=height&&this.scrollY<height2)){
-            if(this.clickEvent){
-              return i+1
-            }else{
+      currentIndex() {
+        for (let i = 0; i < this.listHeight.length; i++) {
+          let height = this.listHeight[i];
+          let height2 = this.listHeight[i + 1];
+          if (!height2 || (this.scrollY >= height && this.scrollY < height2)) {
+            if (this.clickEvent) {
+              return i + 1
+            } else {
               return i
             }
           }
@@ -180,7 +178,7 @@
 </script>
 
 <style scoped>
-  .wrap{
+  .wrap {
     width: 100%;
     height: 924px;
     display: flex;
@@ -189,11 +187,13 @@
     left: 0;
     overflow: hidden;
   }
-  .current{
+
+  .current {
     background-color: #ffffff;
   }
+
   .shop_left {
-    width: 160px;
+    width: 200px;
     font-weight: 200;
     float: left;
     margin-top: 2px;
@@ -210,15 +210,19 @@
     background-color: #f3f5f7;
   }
 
-  .shop_left li > div {
+  .shop_left > ul > li > div {
     width: 112px;
     margin: 0 auto;
     height: 84px;
   }
 
   .shop_right {
-    width: 565px;
-    float: left;
+    width: 600px;
+    left: 200px;
+    height: 100%;
+    margin-top: 2px;
+    position: absolute;
+    overflow: hidden;
   }
 
   .top {
@@ -237,30 +241,37 @@
     width: 493px;
     margin: 36px auto;
     border-bottom: 1px solid gainsboro;
+    list-style: none;
   }
-  .fl{
+
+  .fl {
     float: left;
   }
+
   .every {
     overflow: hidden;
   }
-  .every .photo{
+
+  .every .photo {
     width: 100px;
     height: 100px;
     margin-right: 20px;
   }
+
   .every_r .name {
     font-size: 28px;
     color: rgb(7, 17, 27);
     line-height: 28px;
     font-weight: 700;
   }
+
   .every_r .sendnum {
     font-size: 20px;
     line-height: 50px;
     color: rgb(147, 153, 159);
     text-align: left;
   }
+
   .every_r .price {
     font-size: 28px;
     color: rgb(240, 20, 20);
@@ -277,10 +288,12 @@
     text-decoration: line-through;
     margin-left: 16px;
   }
-  .every_r .drbtn{
+
+  .every_r .drbtn {
     float: right;
   }
-  .addbtn,.resbtn{
+
+  .addbtn, .resbtn {
     color: #00a0dc;
   }
 </style>
