@@ -1,25 +1,22 @@
 <template>
   <div>
     <div class="xxl_black">
-      <div class="xxl_black_top"></div>
       <div class="xxl_black_bottom">
         <div class="xxl_shopCar_top">
           <span class="xxl_GWC">购物车</span>
-          <span class="xxl_emptyAll">清空</span>
+          <span class="xxl_emptyAll" @click="clearAll">清空</span>
         </div>
-        <div class="xxl_shopCar_content">
-          <div class="xxl_scrollDiv">
+        <div class="xxl_shopCar_content" ref="wrap">
+          <div class="xxl_scrollDiv" >
             <ul>
-              <li>
-                <div class="xxl_small">
-                  <div class="xxl_name" v-for="item in carArr">
-                    <span>{{item.name}}</span>
-                    <span class="xxl_money">￥<span>{{item.price}}</span></span>
-                    <div class="drbtn">
-                      <span @click="resbtn(item)"><icon class="resbtn" name="remove_circle_outline" :w="20"></icon></span>
-                      <span>{{item.count}}</span>
-                      <span @click="addbtn(item)"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
-                    </div>
+              <li v-for="item in carArr">
+                <span class="fname fl"><b>{{item.name}}</b></span>
+                <div class="rig" style="float: right">
+                  <span class="xxl_money fl">￥<span>{{item.price}}</span></span>
+                  <div class="drbtn" style="float: right">
+                    <span @click="resbtn(item)"><icon class="resbtn" name="remove_circle_outline" :w="20"></icon></span>
+                    <span>{{item.count}}</span>
+                    <span @click="addbtn(item)"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
                   </div>
                 </div>
               </li>
@@ -32,6 +29,9 @@
 </template>
 
 <script>
+  //列表滚动
+  import BScroll from "better-scroll";
+
   export default {
     name: "carlist",
     component: {},
@@ -40,12 +40,33 @@
         return this.$store.state.carArr
       }
     },
-    // data() {
-    //   return {
-    //     products:this.$store.state.products
-    //   }
-    // },
+    data() {
+      return {
+        listHeight: [],
+        scrollY: 0,//实时获取当前Y轴的高度
+      }
+    },
     methods: {
+      _initScroll() {
+        this.wraps = new BScroll(this.$refs.wrap, {
+          probeType: 3,
+          click: true
+        });
+        //this.rights这个对象监听事件,时时获取位置pos.y
+        this.wraps.on('scroll', (pos) => {
+          this.scrollY = Math.abs(Math.round(pos.y))
+        })
+      },
+      _getHeight() {
+        let rightItems = this.$refs.wrap.getElementsByClassName('xxl_shopCar_content');
+        let height = 0;
+        this.listHeight.push(height);
+        for (let i = 0; i < rightItems.length; i++) {
+          let item = rightItems[i];
+          height += item.clientHeight;
+          this.listHeight.push(height)
+        }
+      },
       //点击加好,添加到购物车
       addbtn:function (json) {
         //从未添加过
@@ -91,27 +112,42 @@
         console.log("减少成功");
         this.$store.commit("carArr",this.carArr)
       },
-    }
+      clearAll(){
+        for (let i = 0; i <this.carArr.length ; i++) {
+          this.carArr[i].flag = false
+          this.carArr[i].count = 0;
+          this.carArr.splice(i,1);
+          i--
+        }
+        console.log("清空");
+        this.$store.commit("carArr","")
+      }
+    },
+    mounted() {
+      this.$nextTick(() => {
+        this._initScroll();
+        this._getHeight()
+      })
+    },
   }
 </script>
 
 <style scoped>
   .xxl_black {
     width: 100%;
-    height: 800px;
+    height: 100%;
+    background-color: rgba(7, 17, 27, 0.6);
     position: absolute;
     top: 0;
-  }
-  /*黑色部分*/
-  .xxl_black_top {
-    width: 100%;
-    height: 400px;
-    background-color: rgba(7, 17, 27, 0.6);
+    left: 0;
     blur: 10px;
   }
   /*内容*/
   .xxl_black_bottom {
-    height: 611px;
+    width: 100%;
+    height: 600px;
+    position: fixed;
+    bottom: 100px;
   }
 
   .xxl_shopCar_top {
@@ -141,68 +177,43 @@
   .xxl_shopCar_content {
     width: 100%;
     position: relative;
+    height: 520px;
+    overflow: hidden;
+    background-color: palevioletred;
   }
 
   .xxl_scrollDiv {
     width: 100%;
     position: absolute;
-    height: 500px;
     background-color: white;
   }
 
   .xxl_scrollDiv > ul > li {
     width: 700px;
     height: 96px;
+    line-height: 96px;
     border-bottom: 1px solid gainsboro;
     margin: 0 auto;
     list-style: none;
   }
-
-  .xxl_small div {
+  .fl{
+    float: left;
+  }
+  .xxl_scrollDiv .rig{
+    width: 30%;
+  }
+  .xxl_scrollDiv .fname{
     display: inline-block;
-    float: left;
-    margin-top: 24px;
-  }
-
-  .xxl_name {
-    width: 400px;
     font-size: 28px;
-    color: rgb(7, 17, 27);
-    line-height: 48px;
-    text-align: left;
-    font-weight: 700;
+    color: rgb(7,17,27);
+    line-height: 96px;
   }
-
-  .xxl_small .xxl_money {
-    margin-left: 36px;
-    font-size: 20px;
-    color: rgb(240, 20, 20);
-    margin-top: 36px;
+  .addbtn, .resbtn {
+    color: #00a0dc;
   }
-
-  .xxl_money span {
+  .xxl_money{
     font-size: 28px;
     font-weight: 700;
+    color: red;
   }
-
-  .xxl_small .xxl_operation {
-    width: 146px;
-    margin-left: 42px;
-    margin-top: 28px;
-    font-size: 32px;
-  }
-
-  .xxl_remove, .xxl_add {
-    width: 50px;
-    color: dodgerblue;
-    float: left;
-  }
-
-  .xxl_singletonNumber {
-    width: 46px;
-    text-align: center;
-    float: left;
-    margin-top: 5px;
-  }
-
 </style>
