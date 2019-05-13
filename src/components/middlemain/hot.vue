@@ -110,6 +110,7 @@
       //点击加好,添加到购物车
       addbtn:function (json) {
         //判断是否详情页添加
+        //this.$store.state.carArr类型为string
         if(this.$store.state.carArr!=""){
           this.carArr = this.$store.state.carArr
         }
