@@ -45,11 +45,7 @@
   height: 100px;
   background-color: black;
   padding-left: 36px;
-  position: fixed;
-  bottom: 0;
-  z-index: 2;
   box-sizing: border-box;
-  /*overflow: hidden;*/
 }
 .xq-foot .fl{
   float: left;

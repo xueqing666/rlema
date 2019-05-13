@@ -12,7 +12,7 @@
             <ul>
               <li>
                 <div class="xxl_small">
-                  <div class="xxl_name" v-for="product in products">莲子核桃黑米粥
+                  <div class="xxl_name" v-for="product in carArr">莲子核桃黑米粥
                     <button @click="reductionFun">-</button>
                     <button @click="addFun">+</button>
                     <span>{{product.flag}}</span>
@@ -37,6 +37,11 @@
   export default {
     name: "carlist",
     component: {},
+    computed:{
+      carArr(){
+        return this.$store.state.carArr
+      }
+    },
     data() {
       return {
         products:this.$store.state.products

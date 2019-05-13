@@ -22,16 +22,16 @@
               <li class="content" v-for="(cc,index) in bb.foods">
                 <!--每个商品-->
                 <div class="every">
-                  <img class="photo fl" :src="bb.foods[index].icon" alt="">
+                  <img class="photo fl" @click="llevjson(cc)" :src="bb.foods[index].icon" alt="">
                   <div class="every_r">
                     <div class="name">{{bb.foods[index].name}}</div>
                     <div class="sendnum">月售1132份 好评率100%</div>
                     <div class="pnum">
                       <div class="price fl">￥{{bb.foods[index].price}}<span>￥28</span></div>
                       <div class="drbtn">
-                        <span v-if="btnflag"><icon class="resbtn" name="remove_circle_outline" :w="20"></icon></span>
-                        <span v-if="btnflag">1</span>
-                        <span @click="addbtn"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
+                        <span @click="resbtn(cc)" v-if="bb.foods[index].flag"><icon class="resbtn" name="remove_circle_outline" :w="20"></icon></span>
+                        <span v-if="bb.foods[index].flag">{{bb.foods[index].count}}</span>
+                        <span @click="addbtn(cc)"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
                       </div>
                     </div>
                   </div>
@@ -55,10 +55,10 @@
     data() {
       return {
         list: "",
-        btnflag:false,
         listHeight:[],
         scrollY:0, //实时获取当前Y轴的高度
         clickEvent:false,
+        carArr:[]
       };
     },
     created(){
@@ -109,11 +109,53 @@
           this.rights.scrollToElement(el,300)
         }
       },
-      addbtn:function () {
-        this.btnflag = true;
+      //点击加好,添加到购物车
+      addbtn:function (json) {
+        //从未添加过
+        if(!json.count){
+          Vue.set(json,"flag",true)
+          Vue.set(json,"count",1);
+          this.carArr.push(json)
+        }else{
+          json.flag = true;
+          //添加过.直接数量加一
+          for (let i = 0; i <this.carArr.length ; i++) {
+            if(this.carArr[i].id==json.id){
+              this.carArr[i].count++;
+              break;
+            }
+          }
+        }
+        console.log("添加成功");
+        //传值给vuex
+        this.$store.commit("carArr",this.carArr)
       },
+      //点击减号,减少购物车中的物件
+      resbtn:function(json){
+        if(json.count==1){
+          json.flag = false;
+          json.count=0
+          for (let i = 0; i <this.carArr.length ; i++) {
+            if(this.carArr[i].id==json.id){
+              this.carArr.splice(i,1);
+              i--
+              break;
+            }
+          }
+        }else{
+          for (let i = 0; i <this.carArr.length ; i++) {
+            if(this.carArr[i].id==json.id){
+              this.carArr[i].count--;
+              break;
+            }
+          }
+        }
+        //传值给vuex
+        console.log("减少成功");
+        this.$store.commit("carArr",this.carArr)
+      },
+      //物品详情页
       llevjson(data){
-        // console.log(data);
         this.$store.commit("llgetflag",{comflag:true,llevjson:data})
       }
     },
