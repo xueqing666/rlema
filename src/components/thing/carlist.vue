@@ -32,7 +32,7 @@
 
 <script>
   //列表滚动
-  import BScroll from "better-scroll"
+  import BScroll from "better-scroll";
 
   export default {
     name: "carlist",
