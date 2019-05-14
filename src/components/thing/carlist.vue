@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="xxl_black">
+      <div class="xxl_black_top"></div>
       <div class="xxl_black_bottom">
         <div class="xxl_shopCar_top">
           <span class="xxl_GWC">购物车</span>
@@ -14,7 +15,8 @@
                 <div class="rig" style="float: right">
                   <span class="xxl_money fl">￥<span>{{item.price}}</span></span>
                   <div class="drbtn" style="float: right">
-                    <span @click="resbtn(item)"><icon class="resbtn" name="remove_circle_outline" :w="20"></icon></span>
+                      <span @click="resbtn(item)"><icon class="resbtn" name="remove_circle_outline"
+                                                        :w="20"></icon></span>
                     <span>{{item.count}}</span>
                     <span @click="addbtn(item)"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
                   </div>
@@ -68,17 +70,17 @@
         }
       },
       //点击加好,添加到购物车
-      addbtn:function (json) {
+      addbtn: function (json) {
         //从未添加过
-        if(!json.count){
-          Vue.set(json,"flag",true)
-          Vue.set(json,"count",1);
+        if (!json.count) {
+          Vue.set(json, "flag", true);
+          Vue.set(json, "count", 1);
           this.carArr.push(json)
-        }else{
+        } else {
           json.flag = true;
           //添加过.直接数量加一
-          for (let i = 0; i <this.carArr.length ; i++) {
-            if(this.carArr[i].id==json.id){
+          for (let i = 0; i < this.carArr.length; i++) {
+            if (this.carArr[i].id == json.id) {
               this.carArr[i].count++;
               break;
             }
@@ -86,23 +88,23 @@
         }
         console.log("添加成功");
         //传值给vuex
-        this.$store.commit("carArr",this.carArr)
+        this.$store.commit("carArr", this.carArr)
       },
       //点击减号,减少购物车中的物件
-      resbtn:function(json){
-        if(json.count==1){
+      resbtn: function (json) {
+        if (json.count == 1) {
           json.flag = false;
-          json.count=0
-          for (let i = 0; i <this.carArr.length ; i++) {
-            if(this.carArr[i].id==json.id){
-              this.carArr.splice(i,1);
-              i--
+          json.count = 0
+          for (let i = 0; i < this.carArr.length; i++) {
+            if (this.carArr[i].id == json.id) {
+              this.carArr.splice(i, 1);
+              i--;
               break;
             }
           }
-        }else{
-          for (let i = 0; i <this.carArr.length ; i++) {
-            if(this.carArr[i].id==json.id){
+        } else {
+          for (let i = 0; i < this.carArr.length; i++) {
+            if (this.carArr[i].id == json.id) {
               this.carArr[i].count--;
               break;
             }
@@ -110,23 +112,24 @@
         }
         //传值给vuex
         console.log("减少成功");
-        this.$store.commit("carArr",this.carArr)
+        this.$store.commit("carArr", this.carArr)
       },
-      clearAll(){
-        for (let i = 0; i <this.carArr.length ; i++) {
-          this.carArr[i].flag = false
+      clearAll() {
+        for (let i = 0; i < this.carArr.length; i++) {
+          this.carArr[i].flag = false;
           this.carArr[i].count = 0;
-          this.carArr.splice(i,1);
+          this.carArr.splice(i, 1);
           i--
         }
+        this.$store.commit("xxlflag", false);
         console.log("清空");
-        this.$store.commit("carArr","")
+        this.$store.commit("carArr", "")
       }
     },
     mounted() {
       this.$nextTick(() => {
         this._initScroll();
-        this._getHeight()
+        this._getHeight();
       })
     },
   }
@@ -135,19 +138,25 @@
 <style scoped>
   .xxl_black {
     width: 100%;
-    height: 100%;
-    background-color: rgba(7, 17, 27, 0.6);
+    height: 1268px;
     position: absolute;
     top: 0;
     left: 0;
-    blur: 10px;
   }
+
+  .xxl_black_top {
+    width: 100%;
+    height: 50%;
+    background-color: rgba(7, 17, 27, 0.6);
+    blur: 10px;
+    float: left;
+  }
+
   /*内容*/
   .xxl_black_bottom {
     width: 100%;
-    height: 600px;
-    position: fixed;
-    bottom: 100px;
+    height: 52%;
+    float: left;
   }
 
   .xxl_shopCar_top {
@@ -177,9 +186,9 @@
   .xxl_shopCar_content {
     width: 100%;
     position: relative;
-    height: 520px;
+    height: 84%;
     overflow: hidden;
-    background-color: palevioletred;
+    background-color: white;
   }
 
   .xxl_scrollDiv {
@@ -196,22 +205,27 @@
     margin: 0 auto;
     list-style: none;
   }
-  .fl{
+
+  .fl {
     float: left;
   }
-  .xxl_scrollDiv .rig{
+
+  .xxl_scrollDiv .rig {
     width: 30%;
   }
-  .xxl_scrollDiv .fname{
+
+  .xxl_scrollDiv .fname {
     display: inline-block;
     font-size: 28px;
-    color: rgb(7,17,27);
+    color: rgb(7, 17, 27);
     line-height: 96px;
   }
+
   .addbtn, .resbtn {
     color: #00a0dc;
   }
-  .xxl_money{
+
+  .xxl_money {
     font-size: 28px;
     font-weight: 700;
     color: red;

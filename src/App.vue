@@ -6,15 +6,14 @@
     <!--大姐书写评价区域-->
     <mainmenu></mainmenu>
 
-    <!--脚上-->
-    <footercar></footercar>
-
     <!--店铺信息-->
     <shopmes v-if="shopclick" @shopmesclosebaba="shopmesclosebaba"></shopmes>
 
     <!--每个商品详情页-->
     <detailpage v-if="llflag"></detailpage>
 
+    <!--脚上-->
+    <footercar></footercar>
   </div>
 </template>
 
