@@ -21,8 +21,8 @@
             <ul>
               <li class="content" v-for="(cc,index) in bb.foods">
                 <!--每个商品-->
-                <div class="every" @click="llevjson(cc)">
-                  <img class="photo fl" :src="bb.foods[index].icon" alt="">
+                <div class="every">
+                  <img class="photo fl" @click="llevjson(cc)" :src="bb.foods[index].icon" alt="">
                   <div class="every_r">
                     <div class="name">{{bb.foods[index].name}}</div>
                     <div class="sendnum">月售1132份 好评率100%</div>
@@ -58,7 +58,7 @@
         listHeight:[],
         scrollY:0, //实时获取当前Y轴的高度
         clickEvent:false,
-        carArr:[]
+        carArr: []
       };
     },
     created(){
@@ -109,6 +109,11 @@
       },
       //点击加好,添加到购物车
       addbtn:function (json) {
+        //判断是否详情页添加
+        //this.$store.state.carArr类型为string
+        if(this.$store.state.carArr!=""){
+          this.carArr = this.$store.state.carArr
+        }
         //从未添加过
         if(!json.count){
           Vue.set(json,"flag",true);
