@@ -111,7 +111,7 @@
       addbtn:function (json) {
         //从未添加过
         if(!json.count){
-          Vue.set(json,"flag",true)
+          Vue.set(json,"flag",true);
           Vue.set(json,"count",1);
           this.carArr.push(json)
         }else{
@@ -136,7 +136,7 @@
           for (let i = 0; i <this.carArr.length ; i++) {
             if(this.carArr[i].id==json.id){
               this.carArr.splice(i,1);
-              i--
+              i--;
               break;
             }
           }

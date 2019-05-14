@@ -8,7 +8,7 @@
           <span class="xxl_emptyAll">清空</span>
         </div>
         <div class="xxl_shopCar_content" ref="wrap">
-          <div class="xxl_scrollDiv" >
+          <div class="xxl_scrollDiv">
             <ul>
               <li v-for="shoplist in 20">
                 <div class="xxl_small">
@@ -32,13 +32,13 @@
 
 <script>
   //列表滚动
-  import BScroll from "better-scroll";
+  import BScroll from "better-scroll"
 
   export default {
     name: "carlist",
     component: {},
-    computed:{
-      carArr(){
+    computed: {
+      carArr() {
         return this.$store.state.carArr
       }
     },
