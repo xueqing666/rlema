@@ -14,6 +14,7 @@
 
     <!--脚上-->
     <footercar></footercar>
+    <Order></Order>
   </div>
 </template>
 
@@ -23,11 +24,11 @@
   import footercar from "./components/public/footercar";
   import shopmes from "./components/shopstore/shopmes"
   import detailpage from "./components/public/ll-xiangqing"
-
+  import Order from "./components/Order/Order"
   export default {
     name: 'App',
     components: {
-      Headers, mainmenu,footercar,shopmes,detailpage
+      Headers, mainmenu,footercar,shopmes,detailpage,Order
     },
     data() {
       return {
