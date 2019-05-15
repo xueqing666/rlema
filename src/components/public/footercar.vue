@@ -66,7 +66,6 @@
       },
       sendfood(){
         this.jiesuanflag = true;
-        console.log("xianshi");
       }
     },
   }
