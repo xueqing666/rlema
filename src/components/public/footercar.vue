@@ -1,18 +1,18 @@
 <template>
   <div>
-    <carlist v-if="xxlflag"></carlist>
-    <div class="xq-foot" @click="carlistAppear">
-      <div class="photo fl">
+    <div class="xq-foot">
+      <div class="photo fl" @click="carlistAppear">
         <div class="how">{{hownum}}</div>
         <icon class="cc" name="shopping_cart" :w="40"></icon>
       </div>
       <div class="much fl">￥ {{howmuch}}</div>
       <div class="ss fl"></div>
       <div class="send much fl">另需配送费 ￥4元</div>
-      <div class="pay">￥20起送</div>
+      <div class="pay" v-if="payflag">￥20起送</div>
+      <div class="pay1" v-else @click="sendfood">去结算</div>
     </div>
 
-    <carlist v-if="flag"></carlist>
+    <carlist v-if="xxlflag"></carlist>
     <jiesuanpage v-if="jiesuanflag"></jiesuanpage>
 
   </div>
@@ -36,14 +36,13 @@
       },
       howmuch() {
         var much = 0;
-        // console.log(this.$store.state.carArr);
         for (var i = 0; i < this.$store.state.carArr.length; i++) {
           much += Number(this.$store.state.carArr[i].count * this.$store.state.carArr[i].price)
         }
         return much;
       },
       payflag(){
-        if(this.$store.state.carArr.length!=0){
+        if(this.$store.state.carArr.length != 0){
           return false;
         }else{
           return true;
@@ -55,18 +54,17 @@
     },
     data() {
       return {
-        flag: false,
+        flag:false,
         jiesuanflag:false
       }
     },
     methods: {
       carlistAppear() {
         this.flag = !this.flag;
-        this.$store.commit("xxlflag", true);
+        this.$store.commit("xxlflag",this.flag);
       },
       sendfood(){
         this.jiesuanflag = true;
-        console.log("xianshi");
       }
     },
   }
