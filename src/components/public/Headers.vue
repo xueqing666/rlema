@@ -2,6 +2,7 @@
     <div class="xq-head" @click="appear" :style="{backgroundImage:'url('+avatar+')'}">
       <div class="wrap">
         <div class="main">
+          <div class="gofirst" @click="goback"><icon name="arrow_lift" :w="20"></icon>back</div>
           <div class="left" :style="{backgroundImage:'url('+avatar+')'}"></div>
           <div class="right">
             <div class="r-top">
@@ -53,6 +54,9 @@
           appear:function () {
             this.flag = true
             this.$emit("shopclickbaba",this.flag)
+          },
+          goback:function () {
+            this.$router.push("/")
           }
       }
     }
@@ -63,6 +67,9 @@
   width: 100%;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.xq-head .gofirst{
+  color: white;
 }
 .xq-head .wrap{
   width: 100%;

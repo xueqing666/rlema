@@ -1,6 +1,5 @@
 <template>
   <div>
-    <carlist v-if="xxlflag"></carlist>
     <div class="xq-foot" @click="carlistAppear">
       <div class="photo fl">
         <div class="how">{{hownum}}</div>
@@ -9,19 +8,24 @@
       <div class="much fl">￥ {{howmuch}}</div>
       <div class="ss fl"></div>
       <div class="send much fl">另需配送费 ￥4元</div>
-      <div class="pay">￥20起送</div>
+      <div class="pay" v-if="payflag">￥20起送</div>
+      <div class="pay1" v-else="payflag" @click="sendfood">去结算</div>
     </div>
 
+    <carlist v-if="flag"></carlist>
+    <jiesuanpage v-if="jiesuanflag"></jiesuanpage>
 
   </div>
 </template>
 
 <script>
+
   import carlist from "../thing/carlist"
+  import jiesuanpage from "../jiesuanpage/jiesuanpage";
 
   export default {
     name: "footercar",
-    components: {carlist},
+    components: {carlist,jiesuanpage},
     computed: {
       hownum() {
         var sum = 0;
@@ -38,19 +42,31 @@
         }
         return much;
       },
+      payflag(){
+        if(this.$store.state.carArr.length != 0){
+          return false;
+        }else{
+          return true;
+        }
+      },
       xxlflag(){
         return this.$store.state.xxlflag;
       }
     },
     data() {
       return {
-        // flag: ""
+        flag: false,
+        jiesuanflag:false
       }
     },
     methods: {
       carlistAppear() {
-        this.$store.commit("xxlflag", true);
+        this.flag = !this.flag
+        this.$store.commit("xxlflag",this.flag);
       },
+      sendfood(){
+        this.jiesuanflag = true;
+      }
     },
   }
 </script>
@@ -81,7 +97,7 @@
     position: relative;
     bottom: 16px;
     margin-right: 36px;
-    z-index: 100;
+    z-index: 2;
   }
 
   .xq-foot .photo .cc {
@@ -136,6 +152,17 @@
     line-height: 100px;
     text-align: center;
     background-color: #2b333b;
+    float: right;
+  }
+  .xq-foot .pay1 {
+    width: 200px;
+    height: 100%;
+    font-size: 24px;
+    color: rgb(255, 255, 255, .4);
+    font-weight: 700;
+    line-height: 100px;
+    text-align: center;
+    background-color: green;
     float: right;
   }
 

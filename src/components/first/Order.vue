@@ -1,5 +1,6 @@
 <template>
   <div class="HistoricalOrder">
+    <div class="gofirst" @click="goback"><icon name="arrow_lift" :w="20"></icon>back</div>
     <header>历史订单</header>
     <div class="Order" v-for="value in list">
       <p class="Order_state">{{value.orderStatus}}</p>
@@ -9,9 +10,7 @@
       <p class="Order_price">总计:￥{{value.orderAmount}}</p>
       <p class="Order_address">地址:{{value.buyerAddress}}</p>
       <p class="Order_Creation_time">创建时间:{{value.createTime}}</p>
-      <p>
-        <button>查看详情</button>
-      </p>
+      <p><button>查看详情</button></p>
     </div>
   </div>
 </template>
@@ -38,6 +37,11 @@
           }
         }
       })
+    },
+    methods:{
+      goback:function () {
+        this.$router.push("/")
+      }
     }
   }
 </script>
@@ -50,7 +54,9 @@
     /*top: 0;*/
     /*width: 100%;*/
   }
-
+  .HistoricalOrder .gofirst{
+    color: white;
+  }
   header {
     font-weight: 700;
     font-size: 35px;
