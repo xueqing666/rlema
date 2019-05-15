@@ -6,8 +6,9 @@ Vue.use(Vuex);
 const state = {
     llflag:false,
     llevjson:"",
-    carArr:""
-}
+    carArr:"",
+    xxlflag:""
+};
 
 const store = new Vuex.Store({
   state,
@@ -19,6 +20,9 @@ const store = new Vuex.Store({
     },
     carArr(state,data){
       state.carArr = data;
+    },
+    xxlflag(state,data){
+      state.xxlflag = data;
     }
   }
 });

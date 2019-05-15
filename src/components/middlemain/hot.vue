@@ -78,11 +78,11 @@
       _initScroll(){
         this.lefts = new BScroll(this.$refs.left,{
           click:true
-        })
+        });
         this.rights = new BScroll(this.$refs.right,{
           probeType:3,
           click:true
-        })
+        });
         this.rights.on("scroll",(pos)=>{
           this.scrollY = Math.abs(Math.round(pos.y))
         })
@@ -116,7 +116,7 @@
         }
         //从未添加过
         if(!json.count){
-          Vue.set(json,"flag",true)
+          Vue.set(json,"flag",true);
           Vue.set(json,"count",1);
           this.carArr.push(json)
         }else{
@@ -141,7 +141,7 @@
           for (let i = 0; i <this.carArr.length ; i++) {
             if(this.carArr[i].id==json.id){
               this.carArr.splice(i,1);
-              i--
+              i--;
               break;
             }
           }
