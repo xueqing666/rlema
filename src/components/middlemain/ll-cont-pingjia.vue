@@ -112,13 +112,15 @@
           _llthis.llpingjiaarr = res.data.data;
           // console.log(_llthis.llpingjiaarr)
         for(var i=0;i<_llthis.llpingjiaarr.length;i++){
+          //获取所有的内容
           _llthis.llpjall.push(_llthis.llpingjiaarr[i]);
 
           if(_llthis.llpingjiaarr[i].rateType == 0){
-
+            //获取好评内容
             _llthis.llgoodarr.push(_llthis.llpingjiaarr[i])
           }
           if(_llthis.llpingjiaarr[i].rateType == 1){
+            //获取差评内容
             _llthis.llbadarr.push(_llthis.llpingjiaarr[i])
           }
         }
@@ -127,15 +129,12 @@
     },
     methods:{
       llall(){
-        // console.log(this.llpjall);
         this.llpingjiaarr = this.llpjall;
       },
       llgetgood(){
-        // console.log(this.llgoodarr);
         this.llpingjiaarr = this.llgoodarr;
       },
       llgetbad(){
-        // console.log(this.llbadarr);
         this.llpingjiaarr = this.llbadarr;
       }
     }

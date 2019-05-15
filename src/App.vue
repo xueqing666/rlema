@@ -45,7 +45,6 @@
     },
     computed:{
       llflag(){
-
         return this.$store.state.llflag;
       }
     }

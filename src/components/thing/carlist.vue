@@ -67,7 +67,7 @@
           this.listHeight.push(height)
         }
       },
-      //点击加好,添加到购物车
+      //点击加,添加到购物车
       addbtn:function (json) {
         //从未添加过
         if(!json.count){
@@ -114,7 +114,7 @@
       },
       clearAll(){
         for (let i = 0; i <this.carArr.length ; i++) {
-          this.carArr[i].flag = false
+          this.carArr[i].flag = false;
           this.carArr[i].count = 0;
           this.carArr.splice(i,1);
           i--

@@ -63,7 +63,7 @@
     methods:{
       addbtn:function (json) {
         //判断是否主页添加
-        if(this.$store.state.carArr!=""){
+        if(this.$store.state.carArr != ""){
           this.carArr = this.$store.state.carArr
         }
         //从未添加过
