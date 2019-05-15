@@ -9,7 +9,9 @@
       <p class="Order_price">总计:￥{{value.orderAmount}}</p>
       <p class="Order_address">地址:{{value.buyerAddress}}</p>
       <p class="Order_Creation_time">创建时间:{{value.createTime}}</p>
-      <p><button>查看详情</button></p>
+      <p>
+        <button>查看详情</button>
+      </p>
     </div>
   </div>
 </template>
@@ -28,16 +30,15 @@
         params: {openid: "ew3euwhd7sjw9diwkq", page: 0, size: 10}
       }).then(function (res) {
         _this.list = res.data.data;
-        console.log(_this.list);
-        for (var i = 0;i<_this.list.length;i++){
-          if (_this.list[i].orderStatus===1){
-            _this.list[i].orderStatus="已完成";
+        for (var i = 0; i < _this.list.length; i++) {
+          if (_this.list[i].orderStatus === 1) {
+            _this.list[i].orderStatus = "已完成";
           } else {
-            _this.list[i].orderStatus="未完成"
+            _this.list[i].orderStatus = "未完成"
           }
         }
       })
-    },
+    }
   }
 </script>
 
@@ -45,6 +46,9 @@
   .HistoricalOrder {
     color: white;
     background: linear-gradient(top, blue, deepskyblue);
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*width: 100%;*/
   }
 
   header {
@@ -61,7 +65,8 @@
     margin: 0 auto;
     border-radius: 5px;
   }
-  .Order>p{
+
+  .Order > p {
     color: black;
     font-size: 26px;
     width: 100%;
@@ -71,10 +76,12 @@
     line-height: 100px;
     border-bottom: 1px solid gainsboro;
   }
-  .Order_state{
+
+  .Order_state {
     font-weight: 700;
   }
-  button{
+
+  button {
     background-color: dodgerblue;
     color: white;
     border: 0;

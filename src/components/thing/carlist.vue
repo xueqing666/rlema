@@ -15,8 +15,9 @@
                 <div class="rig" style="float: right">
                   <span class="xxl_money fl">￥<span>{{item.price}}</span></span>
                   <div class="drbtn" style="float: right">
-                      <span @click="resbtn(item)"><icon class="resbtn" name="remove_circle_outline"
-                                                        :w="20"></icon></span>
+                      <span @click="resbtn(item)">
+                        <icon class="resbtn" name="remove_circle_outline" :w="20"></icon>
+                      </span>
                     <span>{{item.count}}</span>
                     <span @click="addbtn(item)"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
                   </div>
@@ -94,7 +95,7 @@
       resbtn: function (json) {
         if (json.count == 1) {
           json.flag = false;
-          json.count = 0
+          json.count = 0;
           for (let i = 0; i < this.carArr.length; i++) {
             if (this.carArr[i].id == json.id) {
               this.carArr.splice(i, 1);
@@ -119,7 +120,7 @@
           this.carArr[i].flag = false;
           this.carArr[i].count = 0;
           this.carArr.splice(i, 1);
-          i--
+          i--;
         }
         this.$store.commit("xxlflag", false);
         console.log("清空");
