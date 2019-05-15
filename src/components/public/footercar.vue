@@ -1,6 +1,5 @@
 <template>
   <div>
-    <carlist v-if="xxlflag"></carlist>
     <div class="xq-foot" @click="carlistAppear">
       <div class="photo fl">
         <div class="how">{{hownum}}</div>
@@ -9,10 +8,9 @@
       <div class="much fl">￥ {{howmuch}}</div>
       <div class="ss fl"></div>
       <div class="send much fl">另需配送费 ￥4元</div>
-      <div class="pay">￥20起送</div>
+      <div class="pay" v-if="payflag">￥20起送</div>
+      <div class="pay1" v-else="payflag" @click="sendfood">去结算</div>
     </div>
-
-
   </div>
 </template>
 
@@ -38,19 +36,31 @@
         }
         return much;
       },
+      payflag(){
+        if(this.$store.state.carArr.length != 0){
+          return false;
+        }else{
+          return true;
+        }
+      },
       xxlflag(){
         return this.$store.state.xxlflag;
       }
     },
     data() {
       return {
-        // flag: ""
+        flag:false,
+        jiesuanflag:false
       }
     },
     methods: {
       carlistAppear() {
-        this.$store.commit("xxlflag", true);
+        this.flag = !this.flag
+        this.$store.commit("xxlflag",this.flag);
       },
+      sendfood(){
+        this.jiesuanflag = true;
+      }
     },
   }
 </script>

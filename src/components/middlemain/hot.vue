@@ -1,7 +1,7 @@
 <template>
   <div class="xxlshoplist">
     <div class="wrap">
-      <!--左边列表的类表安徽省的红色的的-->
+      <!--左边列表-->
       <div class="shop_left" ref="left">
         <ul>
           <li v-for="(aa,index) in list" :class="{current:currentIndex==index}" @click="selectItem(index,$event)">
