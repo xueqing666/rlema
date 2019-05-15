@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="xq-foot">
-      <div class="photo fl" @click="carlistAppear">
+    <div class="xq-foot" @click="carlistAppear">
+      <div class="photo fl">
         <div class="how">{{hownum}}</div>
         <icon class="cc" name="shopping_cart" :w="40"></icon>
       </div>
@@ -9,10 +9,10 @@
       <div class="ss fl"></div>
       <div class="send much fl">另需配送费 ￥4元</div>
       <div class="pay" v-if="payflag">￥20起送</div>
-      <div class="pay1" v-else @click="sendfood">去结算</div>
+      <div class="pay1" v-else="payflag" @click="sendfood">去结算</div>
     </div>
 
-    <carlist v-if="xxlflag"></carlist>
+    <carlist v-if="flag"></carlist>
     <jiesuanpage v-if="jiesuanflag"></jiesuanpage>
 
   </div>
@@ -36,6 +36,7 @@
       },
       howmuch() {
         var much = 0;
+        // console.log(this.$store.state.carArr);
         for (var i = 0; i < this.$store.state.carArr.length; i++) {
           much += Number(this.$store.state.carArr[i].count * this.$store.state.carArr[i].price)
         }
@@ -54,17 +55,18 @@
     },
     data() {
       return {
-        flag:false,
+        flag: false,
         jiesuanflag:false
       }
     },
     methods: {
       carlistAppear() {
-        this.flag = !this.flag;
+        this.flag = !this.flag
         this.$store.commit("xxlflag",this.flag);
       },
       sendfood(){
         this.jiesuanflag = true;
+        console.log("xianshi");
       }
     },
   }

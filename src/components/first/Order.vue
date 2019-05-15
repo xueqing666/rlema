@@ -1,5 +1,6 @@
 <template>
   <div class="HistoricalOrder">
+    <div class="gofirst" @click="goback"><icon name="arrow_lift" :w="20"></icon>back</div>
     <header>历史订单</header>
     <div class="Order" v-for="value in list">
       <p class="Order_state">{{value.orderStatus}}</p>
@@ -38,6 +39,11 @@
         }
       })
     },
+    methods:{
+      goback:function () {
+        this.$router.push("/")
+      }
+    }
   }
 </script>
 
@@ -46,7 +52,9 @@
     color: white;
     background: linear-gradient(top, blue, deepskyblue);
   }
-
+  .HistoricalOrder .gofirst{
+    color: white;
+  }
   header {
     font-weight: 700;
     font-size: 35px;
