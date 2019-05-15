@@ -1,4 +1,5 @@
 <template>
+  <!--商家页-->
   <div class="ll-onemas">
     <div class="ll-onemas-shangjia">
       <!--商家收藏-->
@@ -95,9 +96,13 @@
       var _this = this;
       this.$axios.get("/api/sell/shop/info?shopId=1544670774658295899")
         .then(function (res) {
+          // console.log(res.data.data);
           _this.lljson = res.data.data;
         })
     },
+    methods:{
+
+    }
   }
 </script>
 
