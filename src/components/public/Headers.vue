@@ -40,19 +40,19 @@
           }
       },
       created() {
-          var _this = this
+          var _this = this;
           this.$axios.get("/api/sell/shop/info?shopId=1544670774658295899")
             .then(function (res) {
-              _this.avatar = res.data.data.avatar
-              _this.shopname = res.data.data.name
-              _this.send = res.data.data.description
-              _this.deliveryTime = res.data.data.deliveryTime
+              _this.avatar = res.data.data.avatar;
+              _this.shopname = res.data.data.name;
+              _this.send = res.data.data.description;
+              _this.deliveryTime = res.data.data.deliveryTime;
               _this.bulletin = res.data.data.bulletin
             })
       },
       methods:{
           appear:function () {
-            this.flag = true
+            this.flag = true;
             this.$emit("shopclickbaba",this.flag)
           },
           goback:function () {

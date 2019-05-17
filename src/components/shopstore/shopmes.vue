@@ -59,8 +59,8 @@
           var _this = this;
           this.$axios.get("/api/sell/shop/info?shopId=1544670774658295899")
             .then(function (res) {
-              _this.name = res.data.data.name
-              _this.score = res.data.data.score
+              _this.name = res.data.data.name;
+              _this.score = res.data.data.score;
               _this.bulletin = res.data.data.bulletin
             })
         },
