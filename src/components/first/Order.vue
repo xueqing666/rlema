@@ -42,25 +42,25 @@
       })
     },
     methods:{
-      _initScroll() {
-        this.wraps = new BScroll(this.$refs.wrap, {
-          probeType: 3,
-          click: true
-        });
-        this.wraps.on('scroll', (pos) => {
-          this.scrollY = Math.abs(Math.round(pos.y))
-        })
-      },
-      _getHeight() {
-        let rightItems = this.$refs.wrap.getElementsByClassName('HistoricalOrder');
-        let height = 0;
-        this.listHeight.push(height);
-        for (let i = 0; i < rightItems.length; i++) {
-          let item = rightItems[i];
-          height += item.clientHeight;
-          this.listHeight.push(height)
-        }
-      },
+      // _initScroll() {
+      //   this.wraps = new BScroll(this.$refs.wrap, {
+      //     probeType: 3,
+      //     click: true
+      //   });
+      //   this.wraps.on('scroll', (pos) => {
+      //     this.scrollY = Math.abs(Math.round(pos.y))
+      //   })
+      // },
+      // _getHeight() {
+      //   let rightItems = this.$refs.wrap.getElementsByClassName('HistoricalOrder');
+      //   let height = 0;
+      //   this.listHeight.push(height);
+      //   for (let i = 0; i < rightItems.length; i++) {
+      //     let item = rightItems[i];
+      //     height += item.clientHeight;
+      //     this.listHeight.push(height)
+      //   }
+      // },
       goback:function () {
         this.$router.push("/")
       }
