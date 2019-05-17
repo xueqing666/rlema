@@ -66,8 +66,8 @@
         },
       methods:{
         disappear:function () {
-          this.$emit("shopmesclosebaba",false)
-        }
+          this.$store.commit("ggflag",false)
+        },
       }
     }
 </script>

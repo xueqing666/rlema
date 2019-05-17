@@ -9,7 +9,8 @@ const state = {
     carArr:"",
     xxlflag:"",
     ifclearall:0,
-    paymoney:0
+    paymoney:0,
+    ggflag:false
 };
 
 const store = new Vuex.Store({
@@ -32,6 +33,9 @@ const store = new Vuex.Store({
     },
     paymoney(state,data){
       state.paymoney = data;
+    },
+    ggflag(state,data){
+      state.ggflag = data
     }
   }
 });
