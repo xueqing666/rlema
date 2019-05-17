@@ -52,8 +52,8 @@
       },
       methods:{
           appear:function () {
-            this.flag = true;
-            this.$emit("shopclickbaba",this.flag)
+            this.flag = true
+            this.$store.commit("ggflag",this.flag);
           },
           goback:function () {
             this.$router.push("/")

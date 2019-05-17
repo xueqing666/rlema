@@ -7,7 +7,7 @@
 <!--      脚上-->
       <footers></footers>
 <!--      点击头显示的商家信息页(公告)-->
-      <shopmsg v-if="shopclick" @shopmesclosebaba="shopmesclosebaba"></shopmsg>
+      <shopmsg v-if="ggflag" ></shopmsg>
 <!--      每个商品详情页-->
       <everyfoodmsg v-if="llflag"></everyfoodmsg>
 
@@ -31,21 +31,14 @@
         name: "store",
       components:{headers,mainmenu,footers,shopmsg,everyfoodmsg},
       data() {
-        return {
-          shopclick:false
-        }
-      },
-      methods: {
-        shopclickbaba:function (flag) {
-          this.shopclick = flag
-        },
-        shopmesclosebaba:function (flag) {
-          this.shopclick = flag
-        }
+        return {}
       },
       computed:{
         llflag(){
           return this.$store.state.llflag;
+        },
+        ggflag(){
+          return this.$store.state.ggflag;
         }
       }
     }

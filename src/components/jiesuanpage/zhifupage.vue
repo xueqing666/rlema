@@ -1,7 +1,7 @@
 <template>
     <div class="zhifupage">
       <p>支付金额</p>
-      <p>31</p>
+      <p>￥{{this.$store.state.paymoney}}</p>
       <p @click="qr">确认支付</p>
     </div>
 </template>
@@ -36,5 +36,11 @@
   .zhifupage p:nth-child(2){
     font-size:40px;
     font-weight: bold;
+  }
+  .zhifupage p:nth-child(3){
+    font-size:40px;
+    font-weight: bold;
+    background-color:darkblue;
+    color:white;
   }
 </style>
