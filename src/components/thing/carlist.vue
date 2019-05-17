@@ -15,8 +15,9 @@
                 <div class="rig" style="float: right">
                   <span class="xxl_money fl">￥<span>{{item.price}}</span></span>
                   <div class="drbtn" style="float: right">
-                      <span @click="resbtn(item)"><icon class="resbtn" name="remove_circle_outline"
-                                                        :w="20"></icon></span>
+                      <span @click="resbtn(item)">
+                        <icon class="resbtn" name="remove_circle_outline" :w="20"></icon>
+                      </span>
                     <span>{{item.count}}</span>
                     <span @click="addbtn(item)"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
                   </div>
@@ -121,7 +122,13 @@
           this.carArr.splice(i, 1);
           i--
         }
-        this.$store.commit("xxlflag", false);
+
+
+        this.$store.commit("xxlflag",false);
+        //点击清空
+        this.$store.commit("ifclearall", 1);
+
+        //车里的东西都清空
         console.log("清空");
         this.$store.commit("carArr", "")
       }

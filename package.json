@@ -17,6 +17,7 @@
     "less-loader": "^5.0.0",
     "lib-flexible": "^0.3.2",
     "mint-ui": "^2.2.13",
+    "moment": "^2.24.0",
     "sass-resources-loader": "^2.0.0",
     "vue": "^2.6.10",
     "vue-bscroll": "^1.0.4",

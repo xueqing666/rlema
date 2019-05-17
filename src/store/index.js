@@ -7,7 +7,8 @@ const state = {
     llflag:false,
     llevjson:"",
     carArr:"",
-    xxlflag:""
+    xxlflag:"",
+    ifclearall:0
 };
 
 const store = new Vuex.Store({
@@ -22,7 +23,11 @@ const store = new Vuex.Store({
       state.carArr = data;
     },
     xxlflag(state,data){
+      state.ifclearall = 0;
       state.xxlflag = data;
+    },
+    ifclearall(state,data){
+      state.ifclearall = data;
     }
   }
 });

@@ -2,7 +2,7 @@
   <div>
     <mt-tabbar v-model="selected">
       <mt-tab-item id="1">外卖</mt-tab-item>
-      <mt-tab-item id="2">订单</mt-tab-item>
+      <mt-tab-item @click.native="goorder" id="2">订单</mt-tab-item>
       <mt-tab-item id="3">我的</mt-tab-item>
     </mt-tabbar>
 
@@ -36,6 +36,11 @@
           return{
             selected:'1'
           }
+      },
+      methods:{
+        goorder:function () {
+          this.$router.push("/order")
+        }
       }
     }
 </script>
