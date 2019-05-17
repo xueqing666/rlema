@@ -109,6 +109,7 @@
       },
       //点击加好,添加到购物车
       addbtn:function (json) {
+        console.log(json);
         //判断是否详情页添加
         //this.$store.state.carArr类型为string
         if(this.$store.state.carArr!=""){
@@ -154,7 +155,7 @@
           }
         }
         //传值给vuex
-        console.log("减少成功");
+        console.log("减少成功啦");
         this.$store.commit("carArr",this.carArr)
       },
       //物品详情页
@@ -302,3 +303,4 @@
     color: #00a0dc;
   }
 </style>
+

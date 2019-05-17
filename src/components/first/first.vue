@@ -17,7 +17,7 @@
       </mt-tab-container-item>
       <mt-tab-container-item id="3">
         <!--我的-->
-        <h1>我的个人信息</h1>
+        <mypage></mypage>
       </mt-tab-container-item>
     </mt-tab-container>
   </div>
@@ -27,10 +27,11 @@
 <script>
   import order from "./Order"
   import whichstore from "./whichstore"
+  import mypage from "../middlemain/mypage"
 
     export default {
         name: "first",
-      components:{whichstore,order},
+      components:{whichstore,order,mypage},
       data(){
           return{
             selected:'1'
