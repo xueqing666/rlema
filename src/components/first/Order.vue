@@ -72,8 +72,6 @@
   .HistoricalOrder {
     color: white;
     background: linear-gradient(top, blue, deepskyblue);
-    /*height: 1004px;*/
-    /*overflow: hidden;*/
   }
   .HistoricalOrder .gofirst{
     color: white;

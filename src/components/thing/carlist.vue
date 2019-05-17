@@ -55,7 +55,6 @@
           probeType: 3,
           click: true
         });
-        //this.rights这个对象监听事件,时时获取位置pos.y
         this.wraps.on('scroll', (pos) => {
           this.scrollY = Math.abs(Math.round(pos.y))
         })
@@ -122,7 +121,6 @@
           this.carArr.splice(i, 1);
           i--
         }
-
 
         this.$store.commit("xxlflag",false);
         //点击清空
