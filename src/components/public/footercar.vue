@@ -13,7 +13,7 @@
     </div>
 
     <carlist v-if="xxlflag"></carlist>
-    <jiesuanpage v-if="jiesuanflag"></jiesuanpage>
+<!--    <jiesuanpage v-if="jiesuanflag"></jiesuanpage>-->
 
   </div>
 </template>
@@ -61,9 +61,7 @@
     },
     methods: {
       carlistAppear() {
-        //是否点击清空
-        console.log(this.$store.state.ifclearall);
-
+        //是否点击清空 1点击清空
         if(this.$store.state.ifclearall==1){
           this.flag = true
         }else{
@@ -72,7 +70,9 @@
         this.$store.commit("xxlflag",this.flag);
       },
       sendfood(){
-        this.jiesuanflag = true;
+        // this.jiesuanflag = true;
+        //跳转到结算页
+        this.$router.push("/payfor")
       }
     },
   }

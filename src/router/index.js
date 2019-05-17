@@ -24,5 +24,11 @@ export default new Router({
       name: 'order',
       component: (resolve)=>require(['../components/first/Order'],resolve)
     },
+    {
+      //点击结算,跳转到结算页
+      path:'/payfor',
+      name:'payfor',
+      component:(resolve)=>require(['../components/jiesuanpage/jiesuanpage'],resolve)
+    }
   ]
 })

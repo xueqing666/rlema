@@ -136,7 +136,7 @@
   .lljiesuanpage{
     width:100%;
     background-color:cornflowerblue;
-    position:fixed;
+    position:absolute;
     top:0;
     left:0;
     z-index:3;
