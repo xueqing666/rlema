@@ -8,7 +8,8 @@ const state = {
     llevjson:"",
     carArr:"",
     xxlflag:"",
-    ifclearall:0
+    ifclearall:0,
+    paymoney:0
 };
 
 const store = new Vuex.Store({
@@ -28,6 +29,9 @@ const store = new Vuex.Store({
     },
     ifclearall(state,data){
       state.ifclearall = data;
+    },
+    paymoney(state,data){
+      state.paymoney = data;
     }
   }
 });
