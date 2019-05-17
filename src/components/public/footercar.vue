@@ -12,7 +12,7 @@
       <div class="pay1" v-else="payflag" @click="sendfood">去结算</div>
     </div>
 
-    <carlist v-if="flag"></carlist>
+    <carlist v-if="xxlflag"></carlist>
     <jiesuanpage v-if="jiesuanflag"></jiesuanpage>
 
   </div>
@@ -25,7 +25,7 @@
 
   export default {
     name: "footercar",
-    components: {carlist,jiesuanpage},
+    components: {carlist, jiesuanpage},
     computed: {
       hownum() {
         var sum = 0;
@@ -42,29 +42,29 @@
         }
         return much;
       },
-      payflag(){
-        if(this.$store.state.carArr.length != 0){
+      payflag() {
+        if (this.$store.state.carArr.length != 0) {
           return false;
-        }else{
+        } else {
           return true;
         }
       },
-      xxlflag(){
+      xxlflag() {
         return this.$store.state.xxlflag;
       }
     },
     data() {
       return {
         flag: false,
-        jiesuanflag:false
+        jiesuanflag: false
       }
     },
     methods: {
       carlistAppear() {
-        this.flag = !this.flag
-        this.$store.commit("xxlflag",this.flag);
+        this.flag = !this.flag;
+        this.$store.commit("xxlflag", this.flag);
       },
-      sendfood(){
+      sendfood() {
         this.jiesuanflag = true;
       }
     },
@@ -154,6 +154,7 @@
     background-color: #2b333b;
     float: right;
   }
+
   .xq-foot .pay1 {
     width: 200px;
     height: 100%;

@@ -2,7 +2,7 @@
     <div class="xq-head" @click="appear" :style="{backgroundImage:'url('+avatar+')'}">
       <div class="wrap">
         <div class="main">
-          <div class="gofirst" @click="goback"><icon name="arrow_lift" :w="20"></icon>back</div>
+          <div class="gofirst" @click="goback"><icon name="arrow_lift" :w="20"></icon></div>
           <div class="left" :style="{backgroundImage:'url('+avatar+')'}"></div>
           <div class="right">
             <div class="r-top">

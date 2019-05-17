@@ -122,6 +122,7 @@
           this.carArr.splice(i, 1);
           i--;
         }
+        //关闭购物车页面
         this.$store.commit("xxlflag", false);
         console.log("清空");
         this.$store.commit("carArr", "")

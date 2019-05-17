@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode:'history', //地址中不出现"#"
@@ -17,6 +17,12 @@ export default new Router({
       path:"/storemain",
       name:'storemain',
       component: (resolve) => require(['../components/store'],resolve)
-    }
+    },
+    {
+      //订单跳转,显示所有店铺(其实就一家)
+      path: '/order',
+      name: 'order',
+      component: (resolve)=>require(['../components/first/Order'],resolve)
+    },
   ]
 })
