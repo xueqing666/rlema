@@ -15,8 +15,9 @@
                 <div class="rig" style="float: right">
                   <span class="xxl_money fl">￥<span>{{item.price}}</span></span>
                   <div class="drbtn" style="float: right">
-                      <span @click="resbtn(item)"><icon class="resbtn" name="remove_circle_outline"
-                                                        :w="20"></icon></span>
+                      <span @click="resbtn(item)">
+                        <icon class="resbtn" name="remove_circle_outline" :w="20"></icon>
+                      </span>
                     <span>{{item.count}}</span>
                     <span @click="addbtn(item)"><icon class="addbtn" name="add_circle" :w="20"></icon></span>
                   </div>
