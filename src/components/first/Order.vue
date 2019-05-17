@@ -1,5 +1,5 @@
 <template>
-  <div class="HistoricalOrder" ref="wrap">
+  <div class="HistoricalOrder">
     <div class="gofirst" @click="goback"><icon name="arrow_lift" :w="20"></icon>back</div>
     <header>历史订单</header>
     <div class="Order" v-for="value in list">
@@ -42,25 +42,6 @@
       })
     },
     methods:{
-      // _initScroll() {
-      //   this.wraps = new BScroll(this.$refs.wrap, {
-      //     probeType: 3,
-      //     click: true
-      //   });
-      //   this.wraps.on('scroll', (pos) => {
-      //     this.scrollY = Math.abs(Math.round(pos.y))
-      //   })
-      // },
-      // _getHeight() {
-      //   let rightItems = this.$refs.wrap.getElementsByClassName('HistoricalOrder');
-      //   let height = 0;
-      //   this.listHeight.push(height);
-      //   for (let i = 0; i < rightItems.length; i++) {
-      //     let item = rightItems[i];
-      //     height += item.clientHeight;
-      //     this.listHeight.push(height)
-      //   }
-      // },
       goback:function () {
         this.$router.push("/")
       }
