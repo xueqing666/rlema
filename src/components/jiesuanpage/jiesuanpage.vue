@@ -32,13 +32,13 @@
         <li>
           商家门店
         </li>
-        <li>
+        <li v-for="item in carArr">
           <!--:style="{backgroundImage:'url('+avatar+')'}"-->
           <span>图片</span>
-          <span>白领单人套餐</span>
-          <span>*1</span>
+          <span>{{item.name}}</span>
+          <span>*{{item.count}}</span>
           <span>￥20</span>
-          <span>￥10</span>
+          <span>￥{{item.price}}</span>
         </li>
         <li>
           <span>包装费</span>
@@ -64,7 +64,7 @@
           <div class="yh">
             <span>优惠说明</span>
             <span>小计:</span>
-            <span>￥31</span>
+            <span>￥{{allmoney}}</span>
           </div>
           <div class="zs">
             <div>
@@ -103,8 +103,8 @@
         </div>
       </div>
       <div class="querenzhifu">
-        <span>￥31</span>
-        <span>已优惠￥5</span>
+        <span>￥{{allmoney}}</span>
+        <span>已优惠￥4</span>
         <span @click="querenzhifu">确认支付</span>
       </div>
       <zhifupage v-show="payflag"></zhifupage>
@@ -118,7 +118,21 @@
     components:{zhifupage},
     data(){
       return {
-        payflag:false
+        payflag:false,
+        carArr:this.$store.state.carArr,
+      }
+    },
+    computed:{
+      allmoney(){
+        var allm = 0;
+        var alla = 0;
+        console.log(this.$store.state.carArr);
+        for(var i=0;i<this.$store.state.carArr.length;i++){
+          allm += Number(this.$store.state.carArr[i].count * this.$store.state.carArr[i].price)
+        }
+        alla = allm + Number(2);
+        this.$store.commit("paymoney",alla);
+        return alla;
       }
     },
     methods:{
@@ -126,6 +140,7 @@
         this.$router.go(-1)
       },
       querenzhifu(){
+        console.log(this.$store.state.carArr);
         this.payflag = !this.payflag;
       }
     }
