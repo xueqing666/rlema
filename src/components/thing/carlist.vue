@@ -95,7 +95,7 @@
       resbtn: function (json) {
         if (json.count == 1) {
           json.flag = false;
-          json.count = 0;
+          json.count = 0
           for (let i = 0; i < this.carArr.length; i++) {
             if (this.carArr[i].id == json.id) {
               this.carArr.splice(i, 1);
@@ -120,10 +120,15 @@
           this.carArr[i].flag = false;
           this.carArr[i].count = 0;
           this.carArr.splice(i, 1);
-          i--;
+          i--
         }
-        //关闭购物车页面
-        this.$store.commit("xxlflag", false);
+
+
+        this.$store.commit("xxlflag",false);
+        //点击清空
+        this.$store.commit("ifclearall", 1);
+
+        //车里的东西都清空
         console.log("清空");
         this.$store.commit("carArr", "")
       }
