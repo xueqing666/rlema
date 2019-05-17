@@ -52,7 +52,7 @@
       },
       methods:{
           appear:function () {
-            this.flag = true
+            this.flag = true;
             this.$store.commit("ggflag",this.flag);
           },
           goback:function () {
