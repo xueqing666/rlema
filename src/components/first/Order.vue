@@ -1,5 +1,5 @@
 <template>
-  <div class="HistoricalOrder">
+  <div class="HistoricalOrder" ref="wrap">
     <div class="gofirst" @click="goback"><icon name="arrow_lift" :w="20"></icon>back</div>
     <header>历史订单</header>
     <div class="Order" v-for="value in list">
@@ -16,11 +16,14 @@
 </template>
 
 <script>
+  import BScroll from "better-scroll";
   export default {
     name: "Order",
     data() {
       return {
         list: "",
+        listHeight: [],
+        scrollY: 0,//实时获取当前Y轴的高度
       };
     },
     created() {
@@ -39,6 +42,25 @@
       })
     },
     methods:{
+      _initScroll() {
+        this.wraps = new BScroll(this.$refs.wrap, {
+          probeType: 3,
+          click: true
+        });
+        this.wraps.on('scroll', (pos) => {
+          this.scrollY = Math.abs(Math.round(pos.y))
+        })
+      },
+      _getHeight() {
+        let rightItems = this.$refs.wrap.getElementsByClassName('HistoricalOrder');
+        let height = 0;
+        this.listHeight.push(height);
+        for (let i = 0; i < rightItems.length; i++) {
+          let item = rightItems[i];
+          height += item.clientHeight;
+          this.listHeight.push(height)
+        }
+      },
       goback:function () {
         this.$router.push("/")
       }
@@ -50,9 +72,8 @@
   .HistoricalOrder {
     color: white;
     background: linear-gradient(top, blue, deepskyblue);
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*width: 100%;*/
+    /*height: 1004px;*/
+    /*overflow: hidden;*/
   }
   .HistoricalOrder .gofirst{
     color: white;

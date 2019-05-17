@@ -13,7 +13,6 @@
     </div>
 
     <carlist v-if="xxlflag"></carlist>
-<!--    <jiesuanpage v-if="jiesuanflag"></jiesuanpage>-->
 
   </div>
 </template>
@@ -36,7 +35,6 @@
       },
       howmuch() {
         var much = 0;
-        // console.log(this.$store.state.carArr);
         for (var i = 0; i < this.$store.state.carArr.length; i++) {
           much += Number(this.$store.state.carArr[i].count * this.$store.state.carArr[i].price)
         }
@@ -70,7 +68,6 @@
         this.$store.commit("xxlflag",this.flag);
       },
       sendfood(){
-        // this.jiesuanflag = true;
         //跳转到结算页
         this.$router.push("/payfor")
       }

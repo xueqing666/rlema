@@ -29,20 +29,20 @@
   import whichstore from "./whichstore"
   import mypage from "../middlemain/mypage"
 
-    export default {
-        name: "first",
-      components:{whichstore,order,mypage},
-      data(){
-          return{
-            selected:'1'
-          }
-      },
-      methods:{
-        goorder:function () {
-          this.$router.push("/order")
-        }
+  export default {
+    name: "first",
+    components: {whichstore, order, mypage},
+    data() {
+      return {
+        selected: '1'
+      }
+    },
+    methods: {
+      goorder: function () {
+        this.$router.push("/order")
       }
     }
+  }
 </script>
 
 <style scoped>

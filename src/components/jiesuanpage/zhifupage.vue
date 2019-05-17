@@ -16,7 +16,14 @@
           this.$store.commit("xxlflag",false);
           this.$store.commit("carArr", "")
         }
-      }
+      },
+      // created() {
+      //   this.$axios.post("/api/sell/buyer/order/create", {
+      //     params: {name:"XQ",photo:123456789,address:"大连蓝鸥",openid:"ew3euwhd7sjw9diwkq",items:"1423113435324"}
+      //   }).then(function (res) {
+      //
+      //   })
+      // },
     }
 </script>
 

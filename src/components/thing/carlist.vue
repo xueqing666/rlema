@@ -95,7 +95,7 @@
       resbtn: function (json) {
         if (json.count == 1) {
           json.flag = false;
-          json.count = 0
+          json.count = 0;
           for (let i = 0; i < this.carArr.length; i++) {
             if (this.carArr[i].id == json.id) {
               this.carArr.splice(i, 1);
