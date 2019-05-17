@@ -11,8 +11,10 @@
       name: "zhifupage",
       methods:{
         qr(){
-          alert("支付成功")
-          // this.$router.go(-1);
+          alert("支付成功");
+          this.$router.go(-1);
+          this.$store.commit("xxlflag",false);
+          this.$store.commit("carArr", "")
         }
       }
     }
