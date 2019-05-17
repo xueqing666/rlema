@@ -12,7 +12,7 @@
       <div class="pay1" v-else="payflag" @click="sendfood">去结算</div>
     </div>
 
-    <carlist v-if="flag"></carlist>
+    <carlist v-if="xxlflag"></carlist>
     <jiesuanpage v-if="jiesuanflag"></jiesuanpage>
 
   </div>
@@ -61,7 +61,14 @@
     },
     methods: {
       carlistAppear() {
-        this.flag = !this.flag
+        //是否点击清空
+        console.log(this.$store.state.ifclearall);
+
+        if(this.$store.state.ifclearall==1){
+          this.flag = true
+        }else{
+          this.flag = !this.flag
+        }
         this.$store.commit("xxlflag",this.flag);
       },
       sendfood(){

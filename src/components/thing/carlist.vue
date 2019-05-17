@@ -121,7 +121,13 @@
           this.carArr.splice(i, 1);
           i--
         }
-        this.$store.commit("xxlflag", false);
+
+
+        this.$store.commit("xxlflag",false);
+        //点击清空
+        this.$store.commit("ifclearall", 1);
+
+        //车里的东西都清空
         console.log("清空");
         this.$store.commit("carArr", "")
       }
